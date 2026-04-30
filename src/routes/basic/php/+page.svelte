@@ -1,6 +1,10 @@
 <script lang="ts">
   import LessonSidebar from '$lib/components/LessonSidebar.svelte';
+  import PracticeBlock from '$lib/components/PracticeBlock.svelte';
+  import { getPractice } from '$lib/data/practice';
   import PhpEchoLab from '$lib/components/PhpEchoLab.svelte';
+
+  const practice = getPractice('php');
 </script>
 
 <section class="section container lesson-layout">
@@ -21,5 +25,8 @@ if ($nome) {
       </div>
     </div>
     <PhpEchoLab />
+    {#if practice}
+      <PracticeBlock {practice} />
+    {/if}
   </div>
 </section>

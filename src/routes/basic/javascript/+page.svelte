@@ -1,6 +1,10 @@
 <script lang="ts">
   import LessonSidebar from '$lib/components/LessonSidebar.svelte';
+  import PracticeBlock from '$lib/components/PracticeBlock.svelte';
+  import { getPractice } from '$lib/data/practice';
   import JsConditionLab from '$lib/components/JsConditionLab.svelte';
+
+  const practice = getPractice('javascript');
 </script>
 
 <section class="section container lesson-layout">
@@ -21,5 +25,8 @@
       </div>
     </div>
     <JsConditionLab />
+    {#if practice}
+      <PracticeBlock {practice} />
+    {/if}
   </div>
 </section>

@@ -1,6 +1,10 @@
 <script lang="ts">
   import LessonSidebar from '$lib/components/LessonSidebar.svelte';
+  import PracticeBlock from '$lib/components/PracticeBlock.svelte';
+  import { getPractice } from '$lib/data/practice';
   import JsLogicLab from '$lib/components/JsLogicLab.svelte';
+
+  const practice = getPractice('js-logic');
 </script>
 
 <section class="section container lesson-layout">
@@ -21,5 +25,8 @@ if (podeAvancar) {
       </div>
     </div>
     <JsLogicLab />
+    {#if practice}
+      <PracticeBlock {practice} />
+    {/if}
   </div>
 </section>

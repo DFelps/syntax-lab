@@ -1,6 +1,10 @@
 <script lang="ts">
   import LessonSidebar from '$lib/components/LessonSidebar.svelte';
+  import PracticeBlock from '$lib/components/PracticeBlock.svelte';
+  import { getPractice } from '$lib/data/practice';
   import FlexFrogMini from '$lib/components/FlexFrogMini.svelte';
+
+  const practice = getPractice('css');
 </script>
 
 <section class="section container lesson-layout">
@@ -21,5 +25,8 @@
       </div>
     </div>
     <FlexFrogMini />
+    {#if practice}
+      <PracticeBlock {practice} />
+    {/if}
   </div>
 </section>

@@ -1,27 +1,23 @@
 # Syntax Lab
 
-Interactive coding learning platform built with SvelteKit.
+Interactive coding learning platform built with **SvelteKit**.
 
-Syntax Lab is a portfolio project focused on teaching programming through short lessons, visual playgrounds and practical experiments.
+Syntax Lab focuses on active learning through hands-on exercises, real-time feedback and progressive learning paths.
 
-## V2 scope
+---
 
-The second version improves the basic path and replaces Python with C as the first programming foundation.
+## Current Version
 
-### Basic path
+Version 3 introduces a more interactive approach for the basic learning path. Each lesson includes:
 
-- Logic with C
-- Variables and types in C
-- If, else and comparisons
-- Loops with for and while
-- Functions in C
-- Arrays and indexes
-- HTML essentials
-- CSS and layout
-- JavaScript basics
-- JavaScript logic
-- PHP first steps
-- Git and terminal
+- visual playground
+- checkpoints
+- quiz questions
+- writing challenges
+- keyword-based feedback
+- local progress saving using localStorage
+
+---
 
 ## Tech Stack
 
@@ -31,27 +27,48 @@ The second version improves the basic path and replaces Python with C as the fir
 - Vite
 - CSS
 
-## Getting started
+---
+
+## Learning Paths
+
+### Basic
+
+- Logic with C
+- C variables and types
+- C if/else
+- C loops
+- C functions
+- C arrays
+- HTML
+- CSS
+- JavaScript
+- JavaScript logic
+- PHP
+- Git and terminal
+
+### Intermediate
+
+Planned modules:
+- DOM
+- APIs
+- Forms
+- PHP CRUD
+- SQL
+- Guided projects
+
+### Advanced
+
+Planned modules:
+- Authentication
+- Testing
+- Security
+- Deployment
+- Student dashboard
+
+---
+
+## Development
 
 ```bash
 npm install
 npm run dev
-```
-
-Open:
-
-```bash
-http://localhost:5173
-```
-
-## Useful commands
-
-```bash
-npm run check
-npm run build
-npm run preview
-```
-
-## Project idea
-
-The goal is to make each programming topic interactive. Instead of only reading theory, the student changes values, sees the output and understands the logic behind the code.

@@ -1,11 +1,12 @@
-<nav class="container" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0;">
-  <a href="/" style="display:flex; align-items:center; gap:.65rem; font-weight:900;">
-    <span style="width:34px; height:34px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:inline-grid; place-items:center; color:#07111d;">S</span>
+<nav class="container flex flex-wrap items-center justify-between gap-3 py-4">
+  <a href="/" class="flex items-center gap-3 font-black tracking-tight">
+    <span class="grid size-9 place-items-center rounded-xl bg-slate-900 text-sm text-white">S</span>
     Syntax Lab
   </a>
-  <div style="display:flex; gap:.6rem; flex-wrap:wrap; color:var(--muted);">
-    <a href="/basic">Básico</a>
-    <a href="/intermediate">Intermediário</a>
-    <a href="/advanced">Avançado</a>
+
+  <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+    <a href="/basic" class="hover:text-slate-900">Básico</a>
+    <a href="/intermediate" class="hover:text-slate-900">Intermediário</a>
+    <a href="/advanced" class="hover:text-slate-900">Avançado</a>
   </div>
 </nav>
