@@ -5,15 +5,18 @@
   import CVariablesLab from '$lib/components/CVariablesLab.svelte';
   import { lessons } from '$lib/data/lessons';
   import { getPractice } from '$lib/data/practice';
+  import { copy, language } from '$lib/i18n';
 
   const lesson = lessons.find((item) => item.slug === 'c-variables');
   const practice = getPractice('c-variables');
+
+  $: page = copy[$language].lessonPages.cVariables;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="c-variables" />
   <div class="grid">
-    <LessonHeader eyebrow="C • types" title="C Variables and Types" description="A variable is a box with a name, type and value. In C, declaring the type is part of the mental model: integer, decimal, character or text." code={`int age = 18;\nfloat price = 49.90;\nchar level = 'B';\n\nprintf("Age: %d", age);`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow={page.eyebrow} title={lesson?.title[$language] ?? ''} description={page.description} code={`int age = 18;\nfloat price = 49.90;\nchar level = 'B';\n\nprintf("Age: %d", age);`} docs={lesson?.docs ?? []} />
     <CVariablesLab />
     {#if practice}
       <PracticeBlock {practice} />

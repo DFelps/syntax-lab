@@ -5,15 +5,18 @@
   import CFunctionsLab from '$lib/components/CFunctionsLab.svelte';
   import { lessons } from '$lib/data/lessons';
   import { getPractice } from '$lib/data/practice';
+  import { copy, language } from '$lib/i18n';
 
   const lesson = lessons.find((item) => item.slug === 'c-functions');
   const practice = getPractice('c-functions');
+
+  $: page = copy[$language].lessonPages.cFunctions;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="c-functions" />
   <div class="grid">
-    <LessonHeader eyebrow="C • functions" title="C Functions" description="Functions avoid repetition and keep programs organized. They can receive parameters and return a result." code={`int somar(int a, int b) {\n    return a + b;\n}\n\nint resultado = somar(2, 3);`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow={page.eyebrow} title={lesson?.title[$language] ?? ''} description={page.description} code={`int sum(int a, int b) {\n    return a + b;\n}\n\nint result = sum(2, 3);`} docs={lesson?.docs ?? []} />
     <CFunctionsLab />
     {#if practice}
       <PracticeBlock {practice} />

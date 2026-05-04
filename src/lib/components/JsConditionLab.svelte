@@ -1,38 +1,38 @@
 <script lang="ts">
-  let temperatura = 24;
-  let chovendo = false;
-  $: recomendacao = temperatura >= 26 && !chovendo
-    ? 'Today is a good day to practice in the park.'
-    : chovendo
-      ? 'Leve guarda-chuva e pratique em ambiente coberto.'
-      : 'Use um casaco leve e continue estudando.';
+  import { copy, language } from '$lib/i18n';
+
+  let temperature = 22;
+  let isRaining = false;
+
+  $: t = copy[$language].labs.jsCondition;
+  $: recommendation = temperature >= 24 && !isRaining ? t.park : isRaining ? t.umbrella : t.jacket;
 </script>
 
 <div class="card grid">
   <div>
-    <div class="badge">JavaScript in action</div>
-    <h3>Decision panel</h3>
+    <div class="badge">{t.badge}</div>
+    <h3>{t.title}</h3>
   </div>
+
   <div class="split">
     <label>
-      <div class="label">Temperatura</div>
-      <input type="range" min="0" max="40" bind:value={temperatura} />
-      <div>{temperatura}°C</div>
+      <div class="label">{t.temperature}: {temperature}°C</div>
+      <input type="range" min="0" max="40" bind:value={temperature} />
     </label>
+
     <label class="card" style="display:flex; align-items:center; gap:.75rem;">
-      <input style="width:auto;" type="checkbox" bind:checked={chovendo} />
-      <span>Is it raining?</span>
+      <input style="width:auto;" type="checkbox" bind:checked={isRaining} />
+      <span>{t.raining}</span>
     </label>
   </div>
-  <pre>{`const temperatura = ${temperatura};
-const chovendo = ${chovendo};
 
-if (temperatura >= 26 && !chovendo) {
+  <pre>{`if (temperature >= 24 && !isRaining) {
   console.log('Today is a good day to practice in the park.');
-} else if (chovendo) {
-  console.log('Leve guarda-chuva e pratique em ambiente coberto.');
+} else if (isRaining) {
+  console.log('Bring an umbrella and practice indoors.');
 } else {
-  console.log('Use um casaco leve e continue estudando.');
+  console.log('Wear a light jacket and keep studying.');
 }`}</pre>
-  <div class="card"><strong>Output:</strong> {recomendacao}</div>
+
+  <div class="card"><strong>{t.output}:</strong> {recommendation}</div>
 </div>

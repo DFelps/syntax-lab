@@ -1,28 +1,39 @@
 <script lang="ts">
-  let number = 7;
-  let limit = 10;
+  import { copy, language } from '$lib/i18n';
 
-  $: rows = Array.from({ length: Number(limit) }, (_, index) => {
-    const multiplier = index + 1;
-    return `${number} x ${multiplier} = ${number * multiplier}`;
-  });
-  $: sum = rows.reduce((total, _, index) => total + number * (index + 1), 0);
+  let number = 3;
+  let limit = 5;
+
+  $: t = copy[$language].labs.cLoops;
+  $: rows = Array.from({ length: limit }, (_, index) => index + 1);
+  $: total = rows.reduce((sum, item) => sum + number * item, 0);
 </script>
 
 <div class="card grid">
-  <div class="badge">for / repetition</div>
-  <h2>Veja o loop acontecendo</h2>
+  <div class="badge">{t.badge}</div>
+  <h2>{t.title}</h2>
+
   <div class="split">
-    <label><div class="label">Number</div><input type="number" min="1" max="20" bind:value={number} /></label>
-    <label><div class="label">Repetitions</div><input type="number" min="1" max="20" bind:value={limit} /></label>
+    <label>
+      <div class="label">{t.number}</div>
+      <input type="number" min="1" max="20" bind:value={number} />
+    </label>
+    <label>
+      <div class="label">{t.repetitions}</div>
+      <input type="number" min="1" max="20" bind:value={limit} />
+    </label>
   </div>
-  <pre>{`for (int i = 1; i <= ${limit}; i++) {
-    printf("${number} x %d = %d", i, ${number} * i);
+
+  <pre>{`int total = 0;
+for (int i = 1; i <= ${limit}; i++) {
+    total = total + (${number} * i);
 }`}</pre>
+
   <div class="loop-list">
-    {#each rows as row}
-      <span>{row}</span>
+    {#each rows as item}
+      <span>{number} × {item} = {number * item}</span>
     {/each}
   </div>
-  <div class="big-result">Soma dos resultados: {sum}</div>
+
+  <div class="big-result">{t.resultSum}: {total}</div>
 </div>

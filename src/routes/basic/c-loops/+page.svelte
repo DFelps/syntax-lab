@@ -5,15 +5,18 @@
   import CLoopsLab from '$lib/components/CLoopsLab.svelte';
   import { lessons } from '$lib/data/lessons';
   import { getPractice } from '$lib/data/practice';
+  import { copy, language } from '$lib/i18n';
 
   const lesson = lessons.find((item) => item.slug === 'c-loops');
   const practice = getPractice('c-loops');
+
+  $: page = copy[$language].lessonPages.cLoops;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="c-loops" />
   <div class="grid">
-    <LessonHeader eyebrow="C • repetition" title="For and While Loops" description="Loops repeat an action without copying the same line many times. First understand counters, stop conditions and updates." code={`for (int i = 1; i <= 10; i++) {\n    printf("%d", i);\n}`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow={page.eyebrow} title={lesson?.title[$language] ?? ''} description={page.description} code={`for (int i = 1; i <= 10; i++) {\n    printf("%d", i);\n}`} docs={lesson?.docs ?? []} />
     <CLoopsLab />
     {#if practice}
       <PracticeBlock {practice} />

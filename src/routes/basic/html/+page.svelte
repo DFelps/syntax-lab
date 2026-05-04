@@ -3,17 +3,22 @@
   import PracticeBlock from '$lib/components/PracticeBlock.svelte';
   import { getPractice } from '$lib/data/practice';
   import HtmlBuilder from '$lib/components/HtmlBuilder.svelte';
+  import { lessons } from '$lib/data/lessons';
+  import { copy, language } from '$lib/i18n';
 
+  const lesson = lessons.find((item) => item.slug === 'html');
   const practice = getPractice('html');
+
+  $: page = copy[$language].lessonPages.html;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="html" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">HTML • basics</div>
-      <h1 style="margin:0;">Essential HTML</h1>
-      <p style="color:var(--muted); margin:0;">The idea here is to learn structure and semantics while seeing the result immediately.</p>
+      <div class="badge">{page.eyebrow}</div>
+      <h1 style="margin:0;">{lesson?.title[$language]}</h1>
+      <p style="color:var(--muted); margin:0;">{page.description}</p>
       <pre>{`<main>
   <article>
     <h1>Title</h1>
@@ -21,8 +26,9 @@
   </article>
 </main>`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">
-        <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noreferrer">MDN HTML</a>
-        <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides" target="_blank" rel="noreferrer">HTML Guides</a>
+        {#each lesson?.docs ?? [] as doc}
+          <a class="lesson-link" href={doc.url} target="_blank" rel="noreferrer">{doc.label}</a>
+        {/each}
       </div>
     </div>
     <HtmlBuilder />

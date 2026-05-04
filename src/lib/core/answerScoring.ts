@@ -48,16 +48,36 @@ export function evaluateChallengeAnswer(answer: string, expectedKeywords: string
   };
 }
 
-export function buildFeedbackMessage(answer: string, evaluation: ChallengeEvaluation): string {
+export type FeedbackMessages = {
+  empty: string;
+  passed: string;
+  missing: string;
+  missingLabel: string;
+};
+
+const defaultFeedbackMessages: FeedbackMessages = {
+  empty: 'Write an attempt first. The goal is to think before checking the model answer.',
+  passed: 'Nice. Your answer already covers the main structure. Compare it with the model and adjust names, syntax or order if needed.',
+  missing: 'Some important parts are still missing.{missing} Try to complete the logic before opening the model answer.',
+  missingLabel: ' Missing: {items}.'
+};
+
+export function buildFeedbackMessage(
+  answer: string,
+  evaluation: ChallengeEvaluation,
+  messages: FeedbackMessages = defaultFeedbackMessages
+): string {
   if (!answer.trim()) {
-    return 'Write an attempt first. The goal is to think before checking the model answer.';
+    return messages.empty;
   }
 
   if (evaluation.passed) {
-    return 'Nice. Your answer already covers the main structure. Compare it with the model and adjust names, syntax or order if needed.';
+    return messages.passed;
   }
 
-  const missingText = evaluation.missing.length ? ` Missing: ${evaluation.missing.join(', ')}.` : '';
+  const missingText = evaluation.missing.length
+    ? messages.missingLabel.replace('{items}', evaluation.missing.join(', '))
+    : '';
 
-  return `Some important parts are still missing.${missingText} Try to complete the logic before opening the model answer.`;
+  return messages.missing.replace('{missing}', missingText);
 }

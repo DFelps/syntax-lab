@@ -1,42 +1,47 @@
 <script lang="ts">
-  let age = 16;
-  let points = 42;
-  $: accessResult = age >= 18 ? 'Can enter the adult area.' : 'Stay on the beginner path for now.';
-  $: bonusResult = points >= 50 ? 'Bonus challenge unlocked.' : 'Keep practicing to unlock the bonus.';
+  import { copy, language } from '$lib/i18n';
+
+  let age = 18;
+  let points = 40;
+
+  $: t = copy[$language].labs.ifElse;
+  $: accessResult = age >= 18 ? t.canEnter : t.stayBeginner;
+  $: bonusResult = points >= 50 ? t.bonusUnlocked : t.keepPracticing;
 </script>
 
 <div class="card grid">
   <div>
-    <div class="badge">Interactivity</div>
-    <h3>If / else lab</h3>
-    <p style="color: var(--muted);">Change the values and watch the decision change.</p>
+    <div class="badge">{t.badge}</div>
+    <h3>{t.title}</h3>
+    <p style="color: var(--muted);">{t.description}</p>
   </div>
+
   <div class="split">
     <label>
-      <div class="label">Age</div>
+      <div class="label">{t.age}: {age}</div>
       <input type="range" min="8" max="30" bind:value={age} />
-      <div>{age} years old</div>
     </label>
     <label>
-      <div class="label">Points</div>
+      <div class="label">{t.points}: {points}</div>
       <input type="range" min="0" max="100" bind:value={points} />
-      <div>{points} points</div>
     </label>
   </div>
+
   <div class="split">
-    <pre>{`age = ${age}
-if age >= 18:
-    print("Can enter the adult area.")
-else:
-    print("Stay on the beginner path for now.")`}</pre>
-    <pre>{`points = ${points}
-if points >= 50:
-    print("Bonus challenge unlocked.")
-else:
-    print("Keep practicing to unlock the bonus.")`}</pre>
+    <pre>{`if (age >= 18) {
+    print("Can enter the adult area.");
+} else {
+    print("Stay on the beginner path for now.");
+}`}</pre>
+    <pre>{`if (points >= 50) {
+    print("Bonus challenge unlocked.");
+} else {
+    print("Keep practicing to unlock the bonus.");
+}`}</pre>
   </div>
+
   <div class="split">
-    <div class="card"><strong>Output 1</strong><p>{accessResult}</p></div>
-    <div class="card"><strong>Output 2</strong><p>{bonusResult}</p></div>
+    <div class="card"><strong>{t.outputOne}</strong><p>{accessResult}</p></div>
+    <div class="card"><strong>{t.outputTwo}</strong><p>{bonusResult}</p></div>
   </div>
 </div>
