@@ -94,7 +94,7 @@
 
         <ul class="mt-4 list-disc pl-5 text-slate-600">
           {#each items as item}
-            <li class="mb-2">{item}</li>
+            <li class="mb-2">{item[$language]}</li>
           {/each}
         </ul>
       </div>

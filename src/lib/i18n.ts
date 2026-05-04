@@ -57,7 +57,16 @@ export const copy = {
 
     levelBasic: 'Foundation',
     levelIntermediate: 'Build',
-    levelAdvanced: 'Career-ready'
+    levelAdvanced: 'Career-ready',
+
+    progressLabel: 'Local progress',
+    progressText: '{completed} of {total} lessons completed',
+    markIncomplete: 'Mark as incomplete',
+    markComplete: 'Complete this lesson',
+
+    basicPath: 'Basic path',
+    partLabel: 'Part {part}',
+    lessonLabel: 'Lesson {index}'
   },
 
   pt: {
@@ -93,7 +102,16 @@ export const copy = {
 
     levelBasic: 'Fundação',
     levelIntermediate: 'Construção',
-    levelAdvanced: 'Preparação profissional'
+    levelAdvanced: 'Preparação profissional',
+
+    progressLabel: 'Progresso local',
+    progressText: '{completed} de {total} aulas concluídas',
+    markIncomplete: 'Marcar como não concluída',
+    markComplete: 'Concluir esta aula',
+
+    basicPath: 'Trilha básica',
+    partLabel: 'Parte {part}',
+    lessonLabel: 'Aula {index}'
   }
 } as const;
 
