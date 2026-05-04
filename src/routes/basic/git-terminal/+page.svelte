@@ -13,7 +13,7 @@
 <section class="section container lesson-layout">
   <LessonSidebar current="git-terminal" />
   <div class="grid">
-    <LessonHeader eyebrow="Ferramentas • básico" title="Git e Terminal" description="Depois da lógica e da web, o aluno precisa aprender o mínimo de terminal e Git para trabalhar como dev de verdade." code={`git status\ngit add .\ngit commit -m "cria primeira trilha"`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow="Tools • basics" title="Git and Terminal" description="After logic and web basics, the student needs enough terminal and Git to work as a real developer." code={`git status\ngit add .\ngit commit -m "create first path"`} docs={lesson?.docs ?? []} />
     <GitTerminalLab />
     {#if practice}
       <PracticeBlock {practice} />

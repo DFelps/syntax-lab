@@ -1,8 +1,8 @@
 <script lang="ts">
   let nome = 'Dev';
-  let modulo = 'PHP Básico';
+  let modulo = 'PHP Basics';
   let concluido = false;
-  $: output = `Olá, ${nome}!\nVocê entrou no módulo: ${modulo}.\n${concluido ? 'Parabéns por concluir a atividade.' : 'Ainda falta terminar o desafio.'}`;
+  $: output = `Hello, ${nome}!\nYou opened the module: ${modulo}.\n${concluido ? 'Congrats on completing the activity.' : 'You still need to finish the challenge.'}`;
 </script>
 
 <div class="card grid">
@@ -12,11 +12,11 @@
   </div>
   <div class="split">
     <label><div class="label">Nome</div><input bind:value={nome} /></label>
-    <label><div class="label">Módulo</div><input bind:value={modulo} /></label>
+    <label><div class="label">Module</div><input bind:value={modulo} /></label>
   </div>
   <label class="card" style="display:flex; align-items:center; gap:.75rem;">
     <input style="width:auto;" type="checkbox" bind:checked={concluido} />
-    <span>Atividade concluída?</span>
+    <span>Activity completed?</span>
   </label>
   <div class="split">
     <pre>{`<?php
@@ -24,13 +24,13 @@ $nome = "${nome}";
 $modulo = "${modulo}";
 $concluido = ${concluido ? 'true' : 'false'};
 
-echo "Olá, $nome!";
-echo "Você entrou no módulo: $modulo.";
+echo "Hello, $nome!";
+echo "You opened the module: $modulo.";
 
 if ($concluido) {
-  echo "Parabéns por concluir a atividade.";
+  echo "Congrats on completing the activity.";
 } else {
-  echo "Ainda falta terminar o desafio.";
+  echo "You still need to finish the challenge.";
 }`}</pre>
     <pre>{output}</pre>
   </div>

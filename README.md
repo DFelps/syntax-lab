@@ -1,21 +1,23 @@
 # Syntax Lab
 
-Interactive coding learning platform built with **SvelteKit**.
+Interactive coding learning platform built with **SvelteKit**, **Svelte 5**, **TypeScript** and **Tailwind CSS**.
 
-Syntax Lab focuses on active learning through hands-on exercises, real-time feedback and progressive learning paths.
+Syntax Lab focuses on active learning through playgrounds, short challenges, quizzes and automated feedback. This version is also structured to demonstrate strong JavaScript/TypeScript fundamentals for frontend interviews.
 
 ---
 
-## Current Version
+## Highlights
 
-Version 3 introduces a more interactive approach for the basic learning path. Each lesson includes:
-
-- visual playground
-- checkpoints
-- quiz questions
-- writing challenges
-- keyword-based feedback
-- local progress saving using localStorage
+- SvelteKit application with Svelte 5
+- Tailwind-powered UI
+- TypeScript-first structure
+- Interactive lesson playgrounds
+- Checkpoints, quizzes and writing challenges
+- Keyword-based answer feedback
+- Local progress saving with `localStorage`
+- Testable JavaScript/TypeScript logic in `src/lib/core`
+- Automated tests with Vitest
+- Lightweight EN/PT language toggle for the main navigation
 
 ---
 
@@ -25,7 +27,8 @@ Version 3 introduces a more interactive approach for the basic learning path. Ea
 - Svelte 5
 - TypeScript
 - Vite
-- CSS
+- Tailwind CSS
+- Vitest
 
 ---
 
@@ -48,22 +51,11 @@ Version 3 introduces a more interactive approach for the basic learning path. Ea
 
 ### Intermediate
 
-Planned modules:
-- DOM
-- APIs
-- Forms
-- PHP CRUD
-- SQL
-- Guided projects
+Planned modules for DOM, APIs, forms, PHP CRUD, SQL and guided projects.
 
 ### Advanced
 
-Planned modules:
-- Authentication
-- Testing
-- Security
-- Deployment
-- Student dashboard
+Planned modules for authentication, testing, security, deployment and a student dashboard.
 
 ---
 
@@ -72,3 +64,28 @@ Planned modules:
 ```bash
 npm install
 npm run dev
+```
+
+---
+
+## Tests
+
+```bash
+npm run test:run
+```
+
+---
+
+## Full validation
+
+```bash
+npm run validate
+```
+
+This runs Svelte type checking and the automated test suite.
+
+---
+
+## Author
+
+Daniel Siqueira

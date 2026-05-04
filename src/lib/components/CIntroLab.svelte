@@ -1,13 +1,13 @@
 <script lang="ts">
   let name = 'Daniel';
-  let goal = 'aprender lógica';
+  let goal = 'learn logic';
   let hours = 2;
 
-  $: output = `Olá, ${name}!\nPlano: ${goal}\nTempo de estudo hoje: ${hours}h`;
+  $: output = `Hello, ${name}!\nPlan: ${goal}\nStudy time today: ${hours}h`;
 </script>
 
 <div class="card grid">
-  <div class="badge">Entrada → processamento → saída</div>
+  <div class="badge">Input → processing → output</div>
   <h2>Monte o primeiro fluxo mental</h2>
   <div class="split">
     <label><div class="label">Nome</div><input bind:value={name} /></label>
@@ -18,8 +18,8 @@
 char objetivo[] = "${goal}";
 int horas = ${hours};
 
-printf("Olá, %s!", nome);
-printf("Plano: %s", objetivo);
-printf("Tempo de estudo hoje: %dh", horas);`}</pre>
+printf("Hello, %s!", nome);
+printf("Plan: %s", objetivo);
+printf("Study time today: %dh", horas);`}</pre>
   <div class="terminal-output">{output}</div>
 </div>

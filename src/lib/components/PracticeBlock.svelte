@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { Practice } from '$lib/data/practice';
+  import { buildFeedbackMessage, evaluateChallengeAnswer } from '$lib/core/answerScoring';
 
   export let practice: Practice;
 
@@ -12,8 +13,9 @@
 
   $: storageKey = `syntaxlab-practice-${practice.slug}`;
   $: completedQuiz = practice.quiz.filter((item, index) => submitted[index] && selected[index] === item.answer).length;
-  $: challengeMatched = practice.challenge.expectedKeywords.filter((keyword) => answer.toLowerCase().includes(keyword.toLowerCase()));
-  $: challengeScore = practice.challenge.expectedKeywords.length ? Math.round((challengeMatched.length / practice.challenge.expectedKeywords.length) * 100) : 0;
+  $: challengeEvaluation = evaluateChallengeAnswer(answer, practice.challenge.expectedKeywords);
+  $: challengeScore = challengeEvaluation.score;
+  $: challengeMatched = challengeEvaluation.matches.filter((match) => match.matched).map((match) => match.keyword);
 
   onMount(() => {
     savedReflection = localStorage.getItem(storageKey) ?? '';
@@ -30,30 +32,20 @@
   }
 
   function checkChallenge() {
-    if (!answer.trim()) {
-      feedback = 'Escreva uma tentativa primeiro. A ideia é forçar o raciocínio antes de ver a resposta.';
-      return;
-    }
-
-    if (challengeScore >= 70) {
-      feedback = 'Boa. Sua resposta já tem a estrutura principal. Compare com o modelo e ajuste nomes, sintaxe ou ordem se precisar.';
-      return;
-    }
-
-    feedback = 'Ainda falta alguma parte importante. Veja as palavras-chave abaixo e tente completar a lógica antes de olhar o modelo.';
+    feedback = buildFeedbackMessage(answer, challengeEvaluation);
   }
 
   function saveReflection() {
     localStorage.setItem(storageKey, answer);
     savedReflection = answer;
-    feedback = 'Resposta salva no navegador.';
+    feedback = 'Answer saved locally in your browser.';
   }
 </script>
 
 <section class="card grid practice-block">
   <div class="practice-header">
     <div>
-      <div class="badge">Prática ativa</div>
+      <div class="badge">Active practice</div>
       <h2>{practice.title}</h2>
       <p class="muted">{practice.prompt}</p>
     </div>
@@ -87,13 +79,13 @@
             </button>
           {/each}
         </div>
-        <button type="button" class="small-button" on:click={() => submitQuestion(questionIndex)}>Responder</button>
+        <button type="button" class="small-button" on:click={() => submitQuestion(questionIndex)}>Submit</button>
         {#if submitted[questionIndex]}
           <div class={selected[questionIndex] === item.answer ? 'selected-correct' : 'selected-wrong'}>
             {#if selected[questionIndex] === item.answer}
-              Acertou. {item.explanation}
+              Correct. {item.explanation}
             {:else}
-              Ainda não. {item.explanation}
+              Not yet. {item.explanation}
             {/if}
           </div>
         {/if}
@@ -108,14 +100,14 @@
     </div>
     <textarea rows="7" bind:value={answer} placeholder={practice.challenge.placeholder}></textarea>
     <div class="challenge-actions">
-      <button type="button" on:click={checkChallenge}>Conferir tentativa</button>
-      <button type="button" class="secondary" on:click={saveReflection}>Salvar resposta</button>
+      <button type="button" on:click={checkChallenge}>Check attempt</button>
+      <button type="button" class="secondary" on:click={saveReflection}>Save answer</button>
     </div>
     {#if feedback}
       <div class="terminal-output">{feedback}</div>
     {/if}
     <div>
-      <div class="label">Cobertura da resposta: {challengeScore}%</div>
+      <div class="label">Answer coverage: {challengeScore}%</div>
       <div class="progress"><span style={`width:${challengeScore}%`}></span></div>
     </div>
     <div class="pill-list">
@@ -124,7 +116,7 @@
       {/each}
     </div>
     <details>
-      <summary>Ver resposta modelo depois de tentar</summary>
+      <summary>Show model answer after trying</summary>
       <pre>{practice.challenge.modelAnswer}</pre>
     </details>
   </div>

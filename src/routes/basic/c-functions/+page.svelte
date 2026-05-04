@@ -13,7 +13,7 @@
 <section class="section container lesson-layout">
   <LessonSidebar current="c-functions" />
   <div class="grid">
-    <LessonHeader eyebrow="C • funções" title="Funções em C" description="Funções evitam repetição e deixam o programa organizado. Elas podem receber parâmetros e devolver um resultado." code={`int somar(int a, int b) {\n    return a + b;\n}\n\nint resultado = somar(2, 3);`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow="C • functions" title="C Functions" description="Functions avoid repetition and keep programs organized. They can receive parameters and return a result." code={`int somar(int a, int b) {\n    return a + b;\n}\n\nint resultado = somar(2, 3);`} docs={lesson?.docs ?? []} />
     <CFunctionsLab />
     {#if practice}
       <PracticeBlock {practice} />

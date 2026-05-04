@@ -13,7 +13,7 @@
 <section class="section container lesson-layout">
   <LessonSidebar current="c-arrays" />
   <div class="grid">
-    <LessonHeader eyebrow="C • arrays" title="Arrays e Índices" description="Array guarda vários valores do mesmo tipo. A parte que mais confunde no começo é lembrar que o primeiro índice é zero." code={`int notas[5] = {8, 7, 10, 6, 9};\nprintf("%d", notas[0]);`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow="C • arrays" title="Arrays and Indexes" description="An array stores multiple values of the same type. The tricky part at first is remembering that the first index is zero." code={`int notas[5] = {8, 7, 10, 6, 9};\nprintf("%d", notas[0]);`} docs={lesson?.docs ?? []} />
     <CArraysLab />
     {#if practice}
       <PracticeBlock {practice} />

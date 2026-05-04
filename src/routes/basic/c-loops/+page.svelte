@@ -13,7 +13,7 @@
 <section class="section container lesson-layout">
   <LessonSidebar current="c-loops" />
   <div class="grid">
-    <LessonHeader eyebrow="C • repetição" title="Loops com For e While" description="Loop serve para repetir uma ação sem copiar a mesma linha várias vezes. Primeiro entenda contador, condição de parada e atualização." code={`for (int i = 1; i <= 10; i++) {\n    printf("%d", i);\n}`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow="C • repetition" title="For and While Loops" description="Loops repeat an action without copying the same line many times. First understand counters, stop conditions and updates." code={`for (int i = 1; i <= 10; i++) {\n    printf("%d", i);\n}`} docs={lesson?.docs ?? []} />
     <CLoopsLab />
     {#if practice}
       <PracticeBlock {practice} />

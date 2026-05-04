@@ -11,13 +11,13 @@
   <LessonSidebar current="js-logic" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">JavaScript • lógica</div>
-      <h1 style="margin:0;">Lógica com JavaScript</h1>
-      <p style="color:var(--muted); margin:0;">Módulo separado para trabalhar comparação, operadores lógicos e leitura de expressões.</p>
-      <pre>{`const podeAvancar = idade >= 14 && temCadastro && acertouQuiz;
+      <div class="badge">JavaScript • logic</div>
+      <h1 style="margin:0;">JavaScript Logic</h1>
+      <p style="color:var(--muted); margin:0;">Separate module for comparisons, logical operators and reading expressions.</p>
+      <pre>{`const canContinue = age >= 14 && hasAccount && passedQuiz;
 
-if (podeAvancar) {
-  console.log('Próximo desafio liberado');
+if (canContinue) {
+  console.log('Next challenge liberado');
 }`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">
         <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank" rel="noreferrer">MDN JS Guide</a>

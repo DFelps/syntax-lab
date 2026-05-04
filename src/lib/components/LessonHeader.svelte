@@ -14,7 +14,7 @@
     <pre>{code}</pre>
   {/if}
   {#if docs.length}
-    <div class="label">Documentação oficial</div>
+    <div class="label">Official documentation</div>
     <div class="pill-list">
       {#each docs as doc}
         <a class="lesson-link small-link" href={doc.url} target="_blank" rel="noreferrer">{doc.label}</a>

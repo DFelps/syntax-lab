@@ -9,16 +9,16 @@
 
 <div class="card grid">
   <div class="badge">Tipos + operadores</div>
-  <h2>Brinque com valores e veja o cálculo</h2>
+  <h2>Change values and see the calculation</h2>
   <div class="split three">
-    <label><div class="label">Preço</div><input type="number" step="0.01" min="0" bind:value={price} /></label>
-    <label><div class="label">Quantidade</div><input type="number" min="1" bind:value={quantity} /></label>
-    <label><div class="label">Desconto %</div><input type="number" min="0" max="100" bind:value={discount} /></label>
+    <label><div class="label">Price</div><input type="number" step="0.01" min="0" bind:value={price} /></label>
+    <label><div class="label">Quantage</div><input type="number" min="1" bind:value={quantity} /></label>
+    <label><div class="label">Discount %</div><input type="number" min="0" max="100" bind:value={discount} /></label>
   </div>
-  <pre>{`float preco = ${Number(price).toFixed(2)};
-int quantidade = ${quantity};
+  <pre>{`float price = ${Number(price).toFixed(2)};
+int quantage = ${quantity};
 float desconto = ${discount};
-float total = preco * quantidade;
+float total = price * quantage;
 float final = total - total * (desconto / 100);`}</pre>
   <div class="result-grid">
     <div><span>Total</span><strong>R$ {total.toFixed(2)}</strong></div>

@@ -2,7 +2,7 @@
   const goals = [
     { justify: 'center', label: 'Centralize o sapo' },
     { justify: 'space-between', label: 'Separe os sapos' },
-    { justify: 'flex-end', label: 'Leve tudo para a direita' }
+    { justify: 'flex-end', label: 'Move everything to the right' }
   ];
   let phase = 0;
   let justify = 'flex-start';
@@ -21,7 +21,7 @@
       <h3>Flex Frog vibes</h3>
       <p style="color: var(--muted);">Objetivo: {target.label}</p>
     </div>
-    <button class="secondary" on:click={nextPhase}>Próximo desafio</button>
+    <button class="secondary" on:click={nextPhase}>Next challenge</button>
   </div>
   <label>
     <div class="label">justify-content</div>
@@ -43,9 +43,9 @@
   </div>
   <div class="card" style={success ? 'border-color: rgba(99,230,190,0.4);' : 'border-color: rgba(255,255,255,0.08);'}>
     {#if success}
-      <strong>Boa!</strong> Você acertou o comportamento desse nível.
+      <strong>Nice!</strong> You matched the behavior for this level.
     {:else}
-      <strong>Tente de novo.</strong> Compare o alinhamento atual com o objetivo.
+      <strong>Try again.</strong> Compare the current alignment with the goal.
     {/if}
   </div>
 </div>

@@ -11,13 +11,13 @@
   <LessonSidebar current="php" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">PHP • básico</div>
-      <h1 style="margin:0;">PHP Primeiros Passos</h1>
-      <p style="color:var(--muted); margin:0;">Aqui a pessoa entende saída de texto, variável e condição, vendo um simulador da resposta.</p>
+      <div class="badge">PHP • basics</div>
+      <h1 style="margin:0;">PHP First Steps</h1>
+      <p style="color:var(--muted); margin:0;">Here the student understands text output, variables and conditions through a response simulator.</p>
       <pre>{`<?php
 $nome = 'Dev';
 if ($nome) {
-  echo 'Olá, Dev';
+  echo 'Hello, Dev';
 }`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">
         <a class="lesson-link" href="https://www.php.net/manual/en/index.php" target="_blank" rel="noreferrer">PHP Manual</a>
