@@ -1,37 +1,46 @@
 <script lang="ts">
-  let nome = 'Dev';
-  let modulo = 'PHP Basics';
-  let concluido = false;
-  $: output = `Hello, ${nome}!\nYou opened the module: ${modulo}.\n${concluido ? 'Congrats on completing the activity.' : 'You still need to finish the challenge.'}`;
+  import { copy, language } from '$lib/i18n';
+
+  let studentName = '';
+  let moduleName = '';
+  let completed = false;
+
+  $: t = copy[$language].labs.phpEcho;
+  $: currentName = studentName || t.defaultName;
+  $: currentModule = moduleName || t.defaultModule;
+  $: output = `${t.hello.replace('{name}', currentName)}\n${t.opened.replace('{module}', currentModule)}\n${completed ? t.congrats : t.pending}`;
 </script>
 
 <div class="card grid">
   <div>
-    <div class="badge">Simulador</div>
-    <h3>PHP echo + if/else</h3>
+    <div class="badge">{t.badge}</div>
+    <h3>{t.title}</h3>
   </div>
+
   <div class="split">
-    <label><div class="label">Nome</div><input bind:value={nome} /></label>
-    <label><div class="label">Module</div><input bind:value={modulo} /></label>
+    <label><div class="label">{t.studentName}</div><input bind:value={studentName} placeholder={t.defaultName} /></label>
+    <label><div class="label">{t.module}</div><input bind:value={moduleName} placeholder={t.defaultModule} /></label>
   </div>
+
   <label class="card" style="display:flex; align-items:center; gap:.75rem;">
-    <input style="width:auto;" type="checkbox" bind:checked={concluido} />
-    <span>Activity completed?</span>
+    <input style="width:auto;" type="checkbox" bind:checked={completed} />
+    <span>{t.completed}</span>
   </label>
+
   <div class="split">
     <pre>{`<?php
-$nome = "${nome}";
-$modulo = "${modulo}";
-$concluido = ${concluido ? 'true' : 'false'};
+$studentName = "${currentName}";
+$moduleName = "${currentModule}";
+$completed = ${completed ? 'true' : 'false'};
 
-echo "Hello, $nome!";
-echo "You opened the module: $modulo.";
+echo "Hello, $studentName!";
+echo "You opened the module: $moduleName.";
 
-if ($concluido) {
+if ($completed) {
   echo "Congrats on completing the activity.";
 } else {
   echo "You still need to finish the challenge.";
 }`}</pre>
-    <pre>{output}</pre>
+    <div class="terminal-output">{output}</div>
   </div>
 </div>

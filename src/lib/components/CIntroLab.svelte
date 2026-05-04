@@ -1,25 +1,47 @@
 <script lang="ts">
-  let name = 'Daniel';
-  let goal = 'learn logic';
-  let hours = 2;
+  import { copy, language } from '$lib/i18n';
 
-  $: output = `Hello, ${name}!\nPlan: ${goal}\nStudy time today: ${hours}h`;
+  let studentName = '';
+  let goal = '';
+  let studyHours = 2;
+
+  $: t = copy[$language].labs.cIntro;
+  $: currentName = studentName || t.defaultName;
+  $: currentGoal = goal || t.defaultGoal;
+  $: output = t.output
+    .replace('{name}', currentName)
+    .replace('{goal}', currentGoal)
+    .replace('{hours}', studyHours.toString());
 </script>
 
 <div class="card grid">
-  <div class="badge">Input → processing → output</div>
-  <h2>Monte o primeiro fluxo mental</h2>
-  <div class="split">
-    <label><div class="label">Nome</div><input bind:value={name} /></label>
-    <label><div class="label">Horas de estudo</div><input type="number" min="0" max="12" bind:value={hours} /></label>
-  </div>
-  <label><div class="label">Objetivo</div><input bind:value={goal} /></label>
-  <pre>{`char nome[] = "${name}";
-char objetivo[] = "${goal}";
-int horas = ${hours};
+  <div class="badge">{t.badge}</div>
+  <h2>{t.title}</h2>
 
-printf("Hello, %s!", nome);
-printf("Plan: %s", objetivo);
-printf("Study time today: %dh", horas);`}</pre>
+  <div class="split">
+    <label>
+      <div class="label">{t.studentName}</div>
+      <input bind:value={studentName} placeholder={t.defaultName} />
+    </label>
+
+    <label>
+      <div class="label">{t.studyHours}</div>
+      <input type="number" min="0" max="12" bind:value={studyHours} />
+    </label>
+  </div>
+
+  <label>
+    <div class="label">{t.goal}</div>
+    <input bind:value={goal} placeholder={t.defaultGoal} />
+  </label>
+
+  <pre>{`char studentName[] = "${currentName}";
+char studyGoal[] = "${currentGoal}";
+int studyHours = ${studyHours};
+
+printf("Hello, %s!\\n", studentName);
+printf("Today's goal: %s\\n", studyGoal);
+printf("Study time: %d hours\\n", studyHours);`}</pre>
+
   <div class="terminal-output">{output}</div>
 </div>

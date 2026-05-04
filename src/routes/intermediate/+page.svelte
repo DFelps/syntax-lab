@@ -1,7 +1,13 @@
+<script lang="ts">
+  import { copy, language } from '$lib/i18n';
+
+  $: page = copy[$language].intermediatePage;
+</script>
+
 <section class="section container">
   <div class="card grid">
-    <div class="badge">Intermediate level</div>
-    <h1 style="margin:0;">Reserved for the next product stage</h1>
-    <p style="color:var(--muted); margin:0;">This path will include forms, DOM, APIs, lightweight persistence and larger challenges.</p>
+    <div class="badge">{page.eyebrow}</div>
+    <h1 style="margin:0;">{page.title}</h1>
+    <p style="color:var(--muted); margin:0;">{page.description}</p>
   </div>
 </section>

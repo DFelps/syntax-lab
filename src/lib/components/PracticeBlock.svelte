@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import type { Practice } from '$lib/data/practice';
   import { buildFeedbackMessage, evaluateChallengeAnswer } from '$lib/core/answerScoring';
+  import { copy, language } from '$lib/i18n';
 
   export let practice: Practice;
 
@@ -11,11 +12,14 @@
   let feedback = '';
   let savedReflection = '';
 
+  $: t = copy[$language];
   $: storageKey = `syntaxlab-practice-${practice.slug}`;
+  $: expectedKeywords = practice.challenge.expectedKeywords[$language];
   $: completedQuiz = practice.quiz.filter((item, index) => submitted[index] && selected[index] === item.answer).length;
-  $: challengeEvaluation = evaluateChallengeAnswer(answer, practice.challenge.expectedKeywords);
+  $: challengeEvaluation = evaluateChallengeAnswer(answer, expectedKeywords);
   $: challengeScore = challengeEvaluation.score;
   $: challengeMatched = challengeEvaluation.matches.filter((match) => match.matched).map((match) => match.keyword);
+  $: answerCoverage = t.practice.answerCoverage.replace('{score}', challengeScore.toString());
 
   onMount(() => {
     savedReflection = localStorage.getItem(storageKey) ?? '';
@@ -32,25 +36,30 @@
   }
 
   function checkChallenge() {
-    feedback = buildFeedbackMessage(answer, challengeEvaluation);
+    feedback = buildFeedbackMessage(answer, challengeEvaluation, {
+      empty: t.practice.feedbackEmpty,
+      passed: t.practice.feedbackPassed,
+      missing: t.practice.feedbackMissing,
+      missingLabel: t.practice.feedbackMissingLabel
+    });
   }
 
   function saveReflection() {
     localStorage.setItem(storageKey, answer);
     savedReflection = answer;
-    feedback = 'Answer saved locally in your browser.';
+    feedback = t.practice.savedLocal;
   }
 </script>
 
 <section class="card grid practice-block">
   <div class="practice-header">
     <div>
-      <div class="badge">Active practice</div>
-      <h2>{practice.title}</h2>
-      <p class="muted">{practice.prompt}</p>
+      <div class="badge">{t.practice.active}</div>
+      <h2>{practice.title[$language]}</h2>
+      <p class="muted">{practice.prompt[$language]}</p>
     </div>
     <div class="practice-score">
-      <span>Quiz</span>
+      <span>{t.practice.quiz}</span>
       <strong>{completedQuiz}/{practice.quiz.length}</strong>
     </div>
   </div>
@@ -59,7 +68,7 @@
     {#each practice.checkpoints as checkpoint, index}
       <div>
         <span>{index + 1}</span>
-        <p>{checkpoint}</p>
+        <p>{checkpoint[$language]}</p>
       </div>
     {/each}
   </div>
@@ -67,7 +76,7 @@
   <div class="grid">
     {#each practice.quiz as item, questionIndex}
       <div class="quiz-card">
-        <strong>{questionIndex + 1}. {item.question}</strong>
+        <strong>{questionIndex + 1}. {item.question[$language]}</strong>
         <div class="option-grid">
           {#each item.options as option, optionIndex}
             <button
@@ -75,17 +84,17 @@
               class={selected[questionIndex] === optionIndex ? 'selected-option' : 'secondary'}
               on:click={() => choose(questionIndex, optionIndex)}
             >
-              {option}
+              {option[$language]}
             </button>
           {/each}
         </div>
-        <button type="button" class="small-button" on:click={() => submitQuestion(questionIndex)}>Submit</button>
+        <button type="button" class="small-button" on:click={() => submitQuestion(questionIndex)}>{t.practice.submit}</button>
         {#if submitted[questionIndex]}
           <div class={selected[questionIndex] === item.answer ? 'selected-correct' : 'selected-wrong'}>
             {#if selected[questionIndex] === item.answer}
-              Correct. {item.explanation}
+              {t.practice.correct} {item.explanation[$language]}
             {:else}
-              Not yet. {item.explanation}
+              {t.practice.notYet} {item.explanation[$language]}
             {/if}
           </div>
         {/if}
@@ -95,29 +104,29 @@
 
   <div class="challenge-card grid">
     <div>
-      <h3>{practice.challenge.title}</h3>
-      <p class="muted">{practice.challenge.instruction}</p>
+      <h3>{practice.challenge.title[$language]}</h3>
+      <p class="muted">{practice.challenge.instruction[$language]}</p>
     </div>
-    <textarea rows="7" bind:value={answer} placeholder={practice.challenge.placeholder}></textarea>
+    <textarea rows="7" bind:value={answer} placeholder={practice.challenge.placeholder[$language]}></textarea>
     <div class="challenge-actions">
-      <button type="button" on:click={checkChallenge}>Check attempt</button>
-      <button type="button" class="secondary" on:click={saveReflection}>Save answer</button>
+      <button type="button" on:click={checkChallenge}>{t.practice.checkAttempt}</button>
+      <button type="button" class="secondary" on:click={saveReflection}>{t.practice.saveAnswer}</button>
     </div>
     {#if feedback}
       <div class="terminal-output">{feedback}</div>
     {/if}
     <div>
-      <div class="label">Answer coverage: {challengeScore}%</div>
+      <div class="label">{answerCoverage}</div>
       <div class="progress"><span style={`width:${challengeScore}%`}></span></div>
     </div>
     <div class="pill-list">
-      {#each practice.challenge.expectedKeywords as keyword}
+      {#each expectedKeywords as keyword}
         <span class={challengeMatched.includes(keyword) ? 'keyword-hit' : ''}>{keyword}</span>
       {/each}
     </div>
     <details>
-      <summary>Show model answer after trying</summary>
-      <pre>{practice.challenge.modelAnswer}</pre>
+      <summary>{t.practice.showModelAnswer}</summary>
+      <pre>{practice.challenge.modelAnswer[$language]}</pre>
     </details>
   </div>
 </section>

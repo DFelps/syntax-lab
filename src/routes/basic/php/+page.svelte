@@ -3,25 +3,31 @@
   import PracticeBlock from '$lib/components/PracticeBlock.svelte';
   import { getPractice } from '$lib/data/practice';
   import PhpEchoLab from '$lib/components/PhpEchoLab.svelte';
+  import { lessons } from '$lib/data/lessons';
+  import { copy, language } from '$lib/i18n';
 
+  const lesson = lessons.find((item) => item.slug === 'php');
   const practice = getPractice('php');
+
+  $: page = copy[$language].lessonPages.php;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="php" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">PHP • basics</div>
-      <h1 style="margin:0;">PHP First Steps</h1>
-      <p style="color:var(--muted); margin:0;">Here the student understands text output, variables and conditions through a response simulator.</p>
+      <div class="badge">{page.eyebrow}</div>
+      <h1 style="margin:0;">{lesson?.title[$language]}</h1>
+      <p style="color:var(--muted); margin:0;">{page.description}</p>
       <pre>{`<?php
-$nome = 'Dev';
-if ($nome) {
+$name = 'Dev';
+if ($name) {
   echo 'Hello, Dev';
 }`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">
-        <a class="lesson-link" href="https://www.php.net/manual/en/index.php" target="_blank" rel="noreferrer">PHP Manual</a>
-        <a class="lesson-link" href="https://www.php.net/manual/en/langref.php" target="_blank" rel="noreferrer">Language Reference</a>
+        {#each lesson?.docs ?? [] as doc}
+          <a class="lesson-link" href={doc.url} target="_blank" rel="noreferrer">{doc.label}</a>
+        {/each}
       </div>
     </div>
     <PhpEchoLab />

@@ -3,25 +3,31 @@
   import PracticeBlock from '$lib/components/PracticeBlock.svelte';
   import { getPractice } from '$lib/data/practice';
   import FlexFrogMini from '$lib/components/FlexFrogMini.svelte';
+  import { lessons } from '$lib/data/lessons';
+  import { copy, language } from '$lib/i18n';
 
+  const lesson = lessons.find((item) => item.slug === 'css');
   const practice = getPractice('css');
+
+  $: page = copy[$language].lessonPages.css;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="css" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">CSS • basics</div>
-      <h1 style="margin:0;">CSS and Layout</h1>
-      <p style="color:var(--muted); margin:0;">This version includes a mini challenge inspired by flexbox games because it makes layout easier to remember.</p>
+      <div class="badge">{page.eyebrow}</div>
+      <h1 style="margin:0;">{lesson?.title[$language]}</h1>
+      <p style="color:var(--muted); margin:0;">{page.description}</p>
       <pre>{`.container {
   display: flex;
   justify-content: center;
   align-items: center;
 }`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">
-        <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">MDN CSS</a>
-        <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides" target="_blank" rel="noreferrer">CSS Guides</a>
+        {#each lesson?.docs ?? [] as doc}
+          <a class="lesson-link" href={doc.url} target="_blank" rel="noreferrer">{doc.label}</a>
+        {/each}
       </div>
     </div>
     <FlexFrogMini />

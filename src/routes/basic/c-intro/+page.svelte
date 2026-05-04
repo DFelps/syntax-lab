@@ -5,15 +5,18 @@
   import CIntroLab from '$lib/components/CIntroLab.svelte';
   import { lessons } from '$lib/data/lessons';
   import { getPractice } from '$lib/data/practice';
+  import { copy, language } from '$lib/i18n';
 
   const lesson = lessons.find((item) => item.slug === 'c-intro');
   const practice = getPractice('c-intro');
+
+  $: page = copy[$language].lessonPages.cIntro;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="c-intro" />
   <div class="grid">
-    <LessonHeader eyebrow="C • basics" title="Logic with C" description="Start thinking like a programmer: the program receives input, processes values and returns output. C makes this flow very explicit." code={`#include <stdio.h>\n\nint main() {\n    printf("Hello, Syntax Lab!");\n    return 0;\n}`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow={page.eyebrow} title={lesson?.title[$language] ?? ''} description={page.description} code={`#include <stdio.h>\n\nint main() {\n    printf("Hello, Syntax Lab!");\n    return 0;\n}`} docs={lesson?.docs ?? []} />
     <CIntroLab />
     {#if practice}
       <PracticeBlock {practice} />

@@ -5,15 +5,18 @@
   import GitTerminalLab from '$lib/components/GitTerminalLab.svelte';
   import { lessons } from '$lib/data/lessons';
   import { getPractice } from '$lib/data/practice';
+  import { copy, language } from '$lib/i18n';
 
   const lesson = lessons.find((item) => item.slug === 'git-terminal');
   const practice = getPractice('git-terminal');
+
+  $: page = copy[$language].lessonPages.gitTerminal;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="git-terminal" />
   <div class="grid">
-    <LessonHeader eyebrow="Tools • basics" title="Git and Terminal" description="After logic and web basics, the student needs enough terminal and Git to work as a real developer." code={`git status\ngit add .\ngit commit -m "create first path"`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow={page.eyebrow} title={lesson?.title[$language] ?? ''} description={page.description} code={`git status\ngit add .\ngit commit -m "create first path"`} docs={lesson?.docs ?? []} />
     <GitTerminalLab />
     {#if practice}
       <PracticeBlock {practice} />

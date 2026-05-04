@@ -3,25 +3,31 @@
   import PracticeBlock from '$lib/components/PracticeBlock.svelte';
   import { getPractice } from '$lib/data/practice';
   import JsConditionLab from '$lib/components/JsConditionLab.svelte';
+  import { lessons } from '$lib/data/lessons';
+  import { copy, language } from '$lib/i18n';
 
+  const lesson = lessons.find((item) => item.slug === 'javascript');
   const practice = getPractice('javascript');
+
+  $: page = copy[$language].lessonPages.javascript;
 </script>
 
 <section class="section container lesson-layout">
   <LessonSidebar current="javascript" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">JavaScript • basics</div>
-      <h1 style="margin:0;">JavaScript Basic</h1>
-      <p style="color:var(--muted); margin:0;">Conditions, operators and decision flow in the browser.</p>
+      <div class="badge">{page.eyebrow}</div>
+      <h1 style="margin:0;">{lesson?.title[$language]}</h1>
+      <p style="color:var(--muted); margin:0;">{page.description}</p>
       <pre>{`if (age >= 18) {
   console.log('adult');
 } else {
   console.log('minor');
 }`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">
-        <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank" rel="noreferrer">MDN JS Guide</a>
-        <a class="lesson-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank" rel="noreferrer">JS Reference</a>
+        {#each lesson?.docs ?? [] as doc}
+          <a class="lesson-link" href={doc.url} target="_blank" rel="noreferrer">{doc.label}</a>
+        {/each}
       </div>
     </div>
     <JsConditionLab />
