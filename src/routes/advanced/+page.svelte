@@ -1,7 +1,7 @@
 <section class="section container">
   <div class="card grid">
-    <div class="badge">Nível avançado</div>
-    <h1 style="margin:0;">Reservado para a evolução do produto</h1>
-    <p style="color:var(--muted); margin:0;">Aqui você encaixa autenticação, banco, dashboard, gamificação e editor mais forte.</p>
+    <div class="badge">Advanced level</div>
+    <h1 style="margin:0;">Reserved for the product evolution</h1>
+    <p style="color:var(--muted); margin:0;">This path will include authentication, database work, dashboards, gamification and a stronger code editor.</p>
   </div>
 </section>

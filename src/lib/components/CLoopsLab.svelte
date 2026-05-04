@@ -10,11 +10,11 @@
 </script>
 
 <div class="card grid">
-  <div class="badge">for / repetição</div>
+  <div class="badge">for / repetition</div>
   <h2>Veja o loop acontecendo</h2>
   <div class="split">
-    <label><div class="label">Número</div><input type="number" min="1" max="20" bind:value={number} /></label>
-    <label><div class="label">Repetições</div><input type="number" min="1" max="20" bind:value={limit} /></label>
+    <label><div class="label">Number</div><input type="number" min="1" max="20" bind:value={number} /></label>
+    <label><div class="label">Repetitions</div><input type="number" min="1" max="20" bind:value={limit} /></label>
   </div>
   <pre>{`for (int i = 1; i <= ${limit}; i++) {
     printf("${number} x %d = %d", i, ${number} * i);

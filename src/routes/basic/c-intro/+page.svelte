@@ -13,7 +13,7 @@
 <section class="section container lesson-layout">
   <LessonSidebar current="c-intro" />
   <div class="grid">
-    <LessonHeader eyebrow="C • básico" title="Lógica com C" description="Comece pensando como programador: o programa recebe entrada, processa valores e devolve uma saída. C deixa esse fluxo bem explícito." code={`#include <stdio.h>\n\nint main() {\n    printf("Olá, Syntax Lab!");\n    return 0;\n}`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow="C • basics" title="Logic with C" description="Start thinking like a programmer: the program receives input, processes values and returns output. C makes this flow very explicit." code={`#include <stdio.h>\n\nint main() {\n    printf("Hello, Syntax Lab!");\n    return 0;\n}`} docs={lesson?.docs ?? []} />
     <CIntroLab />
     {#if practice}
       <PracticeBlock {practice} />

@@ -11,9 +11,9 @@
   <LessonSidebar current="css" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">CSS • básico</div>
-      <h1 style="margin:0;">CSS e Layout</h1>
-      <p style="color:var(--muted); margin:0;">A v1 já nasce com um mini desafio inspirado em jogos de flexbox porque isso fixa muito bem.</p>
+      <div class="badge">CSS • basics</div>
+      <h1 style="margin:0;">CSS and Layout</h1>
+      <p style="color:var(--muted); margin:0;">This version includes a mini challenge inspired by flexbox games because it makes layout easier to remember.</p>
       <pre>{`.container {
   display: flex;
   justify-content: center;

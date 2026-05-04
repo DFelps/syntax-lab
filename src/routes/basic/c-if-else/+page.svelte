@@ -13,7 +13,7 @@
 <section class="section container lesson-layout">
   <LessonSidebar current="c-if-else" />
   <div class="grid">
-    <LessonHeader eyebrow="C • decisão" title="If, Else e Comparações" description="O if decide qual caminho o programa vai seguir. Essa é uma das bases mais importantes para qualquer linguagem depois." code={`if (idade >= 18) {\n    printf("maior de idade");\n} else {\n    printf("menor de idade");\n}`} docs={lesson?.docs ?? []} />
+    <LessonHeader eyebrow="C • decision" title="If, Else and Comparisons" description="if decides which path the program follows. This is one of the most important foundations for any language later." code={`if (age >= 18) {\n    printf("adult");\n} else {\n    printf("minor");\n}`} docs={lesson?.docs ?? []} />
     <CIfElseLab />
     {#if practice}
       <PracticeBlock {practice} />

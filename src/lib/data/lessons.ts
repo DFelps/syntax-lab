@@ -19,71 +19,71 @@ const cDocs = [
 export const lessons: Lesson[] = [
   {
     slug: 'c-intro',
-    title: 'Lógica com C',
+    title: 'Logic with C',
     level: 'basic',
     area: 'C',
-    summary: 'Primeiro contato com algoritmo, entrada, processamento, saída e leitura mental de código em C.',
-    interaction: 'Simulador de algoritmo com entrada, processamento e saída.',
+    summary: 'First contact with algorithms, input, processing, output and reading C code mentally.',
+    interaction: 'Algorithm simulator with input, processing and output.',
     estimatedMinutes: 25,
     docs: cDocs
   },
   {
     slug: 'c-variables',
-    title: 'Variáveis e Tipos em C',
+    title: 'C Variables and Types',
     level: 'basic',
     area: 'C',
-    summary: 'int, float, char, operadores aritméticos e como valores mudam durante a execução.',
-    interaction: 'Laboratório de cálculo com tipos e resultado formatado.',
+    summary: 'int, float, char, arithmetic operators and how values change during execution.',
+    interaction: 'Calculation lab with types and formatted output.',
     estimatedMinutes: 35,
     docs: cDocs
   },
   {
     slug: 'c-if-else',
-    title: 'If, Else e Comparações',
+    title: 'If, Else and Comparisons',
     level: 'basic',
     area: 'C',
-    summary: 'Decisão, comparação, operadores relacionais e fluxo alternativo em programas simples.',
-    interaction: 'Playground de condição com nota, idade e status.',
+    summary: 'Decisions, comparisons, relational operators and alternative flow in simple programs.',
+    interaction: 'Condition playground with score, age and status.',
     estimatedMinutes: 35,
     docs: cDocs
   },
   {
     slug: 'c-loops',
-    title: 'Loops com For e While',
+    title: 'For and While Loops',
     level: 'basic',
     area: 'C',
-    summary: 'Repetição controlada, contador, acumulador e diferença prática entre for e while.',
-    interaction: 'Gerador de tabuada e somatório com loop visual.',
+    summary: 'Controlled repetition, counters, accumulators and practical differences between for and while.',
+    interaction: 'Multiplication table and sum generator with visual loop.',
     estimatedMinutes: 40,
     docs: cDocs
   },
   {
     slug: 'c-functions',
-    title: 'Funções em C',
+    title: 'C Functions',
     level: 'basic',
     area: 'C',
-    summary: 'Separar responsabilidades, receber parâmetros, retornar valores e reutilizar lógica.',
-    interaction: 'Montador de função com parâmetros e retorno calculado.',
+    summary: 'Separate responsibilities, receive parameters, return values and reuse logic.',
+    interaction: 'Function builder with parameters and calculated return.',
     estimatedMinutes: 40,
     docs: cDocs
   },
   {
     slug: 'c-arrays',
-    title: 'Arrays e Índices',
+    title: 'Arrays and Indexes',
     level: 'basic',
     area: 'C',
-    summary: 'Listas de valores, posições, índices começando em zero e percorrer arrays com loops.',
-    interaction: 'Editor de array com índice selecionado, soma e média.',
+    summary: 'Value lists, positions, zero-based indexes and array iteration with loops.',
+    interaction: 'Array editor with selected index, sum and average.',
     estimatedMinutes: 45,
     docs: cDocs
   },
   {
     slug: 'html',
-    title: 'HTML Essencial',
+    title: 'Essential HTML',
     level: 'basic',
     area: 'HTML',
-    summary: 'Estrutura de página, semântica, texto, listas, links e blocos fundamentais da web.',
-    interaction: 'Montador de cards com preview instantâneo do HTML.',
+    summary: 'Page structure, semantics, text, lists, links and fundamental web blocks.',
+    interaction: 'Card builder with instant HTML preview.',
     estimatedMinutes: 35,
     docs: [
       { label: 'MDN HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
@@ -92,11 +92,11 @@ export const lessons: Lesson[] = [
   },
   {
     slug: 'css',
-    title: 'CSS e Layout',
+    title: 'CSS and Layout',
     level: 'basic',
     area: 'CSS',
-    summary: 'Seletores, box model, flexbox e composição visual. Aqui entra o clima de jogo de flex.',
-    interaction: 'Mini desafio de alinhamento inspirado em jogos de flex.',
+    summary: 'Selectors, box model, flexbox and visual composition with a small flexbox game feel.',
+    interaction: 'Mini alignment challenge inspired by flexbox games.',
     estimatedMinutes: 40,
     docs: [
       { label: 'MDN CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
@@ -105,11 +105,11 @@ export const lessons: Lesson[] = [
   },
   {
     slug: 'javascript',
-    title: 'JavaScript Básico',
+    title: 'JavaScript Basic',
     level: 'basic',
     area: 'JavaScript',
-    summary: 'Variáveis, condição, operadores, funções e manipulação de dados no navegador.',
-    interaction: 'Painel para testar condições e ver o fluxo da decisão.',
+    summary: 'Variables, conditions, operators, functions and browser data manipulation.',
+    interaction: 'Panel to test conditions and inspect decision flow.',
     estimatedMinutes: 45,
     docs: [
       { label: 'MDN JavaScript Guide', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide' },
@@ -118,11 +118,11 @@ export const lessons: Lesson[] = [
   },
   {
     slug: 'js-logic',
-    title: 'Lógica com JavaScript',
+    title: 'JavaScript Logic',
     level: 'basic',
     area: 'JavaScript',
-    summary: 'Operadores lógicos, comparação, decisões encadeadas e treino de raciocínio usando JS.',
-    interaction: 'Laboratório de expressões lógicas com resposta imediata.',
+    summary: 'Logical operators, comparisons, chained decisions and reasoning practice with JS.',
+    interaction: 'Logical expression lab with immediate feedback.',
     estimatedMinutes: 40,
     docs: [
       { label: 'MDN JavaScript Guide', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide' },
@@ -131,11 +131,11 @@ export const lessons: Lesson[] = [
   },
   {
     slug: 'php',
-    title: 'PHP Primeiros Passos',
+    title: 'PHP First Steps',
     level: 'basic',
     area: 'PHP',
-    summary: 'Sintaxe inicial, echo, variáveis, condição e como PHP conversa com HTML.',
-    interaction: 'Simulador de echo e if/else com saída renderizada.',
+    summary: 'Initial syntax, echo, variables, conditions and how PHP talks to HTML.',
+    interaction: 'Echo and if/else simulator with rendered output.',
     estimatedMinutes: 40,
     docs: [
       { label: 'PHP Manual', url: 'https://www.php.net/manual/en/index.php' },
@@ -144,11 +144,11 @@ export const lessons: Lesson[] = [
   },
   {
     slug: 'git-terminal',
-    title: 'Git e Terminal',
+    title: 'Git and Terminal',
     level: 'basic',
-    area: 'Ferramentas',
-    summary: 'Comandos essenciais para criar projeto, versionar alterações e entender o fluxo básico do Git.',
-    interaction: 'Simulador de comandos com status do repositório.',
+    area: 'Tools',
+    summary: 'Essential commands to create a project, version changes and understand basic Git flow.',
+    interaction: 'Command simulator with repository status.',
     estimatedMinutes: 35,
     docs: [
       { label: 'Git Book', url: 'https://git-scm.com/book/en/v2' },
@@ -159,34 +159,37 @@ export const lessons: Lesson[] = [
 
 export const roadmap = {
   basic: [
-    'Lógica com C',
-    'Variáveis e tipos',
-    'If, else e comparação',
+    'Logic with C',
+    'Variables and types',
+    'If, else and comparison',
     'Loops',
-    'Funções',
+    'Functions',
     'Arrays',
     'HTML',
     'CSS',
     'JavaScript',
     'PHP',
-    'Git e terminal'
+    'Git and terminal'
   ],
   intermediate: [
-    'DOM e eventos',
-    'Formulários e validação',
-    'APIs e JSON',
-    'CRUD com PHP',
-    'SQL básico',
-    'Projeto guiado completo'
+    'DOM and events',
+    'Forms and validation',
+    'APIs and JSON',
+    'PHP CRUD',
+    'Basic SQL',
+    'Complete guided project'
   ],
   advanced: [
-    'Autenticação',
-    'Banco de dados real',
-    'Testes',
-    'Segurança',
+    'Authentication',
+    'Real database',
+    'Testing',
+    'Security',
     'Deploy',
-    'Dashboard do aluno'
+    'Student dashboard'
   ]
 };
 
-export const basicGoal = 'Criar base mental forte em programação antes de entrar pesado em frameworks.';
+export const basicGoal = {
+  en: "Build a strong programming foundation focused on logic, structure and real problem solving.",
+  pt: "Construir uma base sólida de programação focada em lógica, estrutura e resolução de problemas reais."
+} as const;

@@ -11,13 +11,13 @@
   <LessonSidebar current="html" />
   <div class="grid">
     <div class="card grid">
-      <div class="badge">HTML • básico</div>
-      <h1 style="margin:0;">HTML Essencial</h1>
-      <p style="color:var(--muted); margin:0;">A ideia aqui é aprender estrutura e semântica vendo o resultado imediatamente.</p>
+      <div class="badge">HTML • basics</div>
+      <h1 style="margin:0;">Essential HTML</h1>
+      <p style="color:var(--muted); margin:0;">The idea here is to learn structure and semantics while seeing the result immediately.</p>
       <pre>{`<main>
   <article>
-    <h1>Título</h1>
-    <p>Conteúdo</p>
+    <h1>Title</h1>
+    <p>Content</p>
   </article>
 </main>`}</pre>
       <div style="display:flex; flex-wrap:wrap; gap:.75rem;">

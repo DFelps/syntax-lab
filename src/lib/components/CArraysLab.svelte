@@ -11,9 +11,9 @@
 
 <div class="card grid">
   <div class="badge">arrays</div>
-  <h2>Índice começa em zero</h2>
-  <label><div class="label">Valores separados por vírgula</div><input bind:value={raw} /></label>
-  <label><div class="label">Índice selecionado</div><input type="number" min="0" max={Math.max(values.length - 1, 0)} bind:value={selected} /></label>
+  <h2>Index starts at zero</h2>
+  <label><div class="label">Comma-separated values</div><input bind:value={raw} /></label>
+  <label><div class="label">Selected index</div><input type="number" min="0" max={Math.max(values.length - 1, 0)} bind:value={selected} /></label>
   <pre>{`int notas[] = { ${values.join(', ')} };
 int indice = ${safeIndex};
 int valor = notas[indice];`}</pre>
@@ -23,8 +23,8 @@ int valor = notas[indice];`}</pre>
     {/each}
   </div>
   <div class="result-grid">
-    <div><span>Valor no índice {safeIndex}</span><strong>{current}</strong></div>
+    <div><span>Value at index {safeIndex}</span><strong>{current}</strong></div>
     <div><span>Soma</span><strong>{sum}</strong></div>
-    <div><span>Média</span><strong>{average.toFixed(2)}</strong></div>
+    <div><span>Average</span><strong>{average.toFixed(2)}</strong></div>
   </div>
 </div>

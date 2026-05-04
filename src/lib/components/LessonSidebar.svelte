@@ -10,7 +10,7 @@
 <div class="grid">
   <ProgressTracker {current} />
   <div class="card">
-    <div class="label">Trilha básica</div>
+    <div class="label">Basic path</div>
     <div class="sidebar-list">
       {#each basicLessons as lesson}
         <a class:active={current === lesson.slug} class="lesson-link" href={`/basic/${lesson.slug}`}>
