@@ -70,14 +70,114 @@ export const copy = {
     officialDocumentation: 'Official documentation',
 
     intermediatePage: {
-      eyebrow: 'Intermediate level',
-      title: 'Reserved for the next product stage',
-      description: 'This path will include forms, DOM, APIs, lightweight persistence and larger challenges.'
+      eyebrow: 'Intermediate path',
+      title: 'Build real application skills',
+      description: 'Move beyond the basics with DOM, forms, APIs, persistence and a guided project structure.'
     },
     advancedPage: {
-      eyebrow: 'Advanced level',
-      title: 'Reserved for the product evolution',
-      description: 'This path will include authentication, database work, dashboards, gamification and a stronger code editor.'
+      eyebrow: 'Advanced path',
+      title: 'Get closer to production-ready work',
+      description: 'Practice authentication, databases, testing, security, deployment and dashboard thinking.'
+    },
+
+    pathLabels: {
+      intermediatePath: 'Intermediate path',
+      advancedPath: 'Advanced path',
+      moduleLabel: 'Module {index}',
+      estimatedTime: '{minutes}min',
+      openModule: 'Open module',
+      overview: 'Overview',
+      whatYouPractice: 'What you practice',
+      starterCode: 'Starter code',
+      nextStep: 'Next step',
+      modulePlan: 'Module plan'
+    },
+
+    pathLessons: {
+      domEvents: {
+        eyebrow: 'JavaScript • DOM',
+        goal: 'Connect a user action to a visible interface change.',
+        next: 'Build a small counter, menu toggle or filter using event listeners and state.',
+        concepts: ['querySelector', 'addEventListener', 'state changes', 'rendering feedback'],
+        code: `const button = document.querySelector('[data-action]');\nconst output = document.querySelector('[data-output]');\nlet clicks = 0;\n\nbutton?.addEventListener('click', () => {\n  clicks += 1;\n  if (output) output.textContent = ` + "`Clicked ${clicks} times`" + `;\n});`
+      },
+      formsValidation: {
+        eyebrow: 'Frontend • forms',
+        goal: 'Validate fields before sending data and explain useful feedback to the user.',
+        next: 'Create a sign-up form with required fields, email validation and clear error messages.',
+        concepts: ['required fields', 'email format', 'error messages', 'submit handling'],
+        code: `function validateEmail(email: string) {\n  return email.includes('@') && email.includes('.');\n}\n\nconst formState = {\n  name: 'Student',\n  email: 'student@example.com'\n};`
+      },
+      apisJson: {
+        eyebrow: 'JavaScript • APIs',
+        goal: 'Understand the request lifecycle: loading, success and error.',
+        next: 'Fetch a list of items, show a loading state and render a fallback error message.',
+        concepts: ['fetch', 'JSON parsing', 'loading state', 'error state'],
+        code: `async function loadLessons() {\n  const response = await fetch('/api/lessons');\n  if (!response.ok) throw new Error('Request failed');\n  return response.json();\n}`
+      },
+      phpCrud: {
+        eyebrow: 'PHP • CRUD',
+        goal: 'Map each CRUD action to a route, request and response.',
+        next: 'Design a simple products endpoint with create, list, update and delete operations.',
+        concepts: ['create', 'read', 'update', 'delete', 'HTTP methods'],
+        code: `GET /products\nPOST /products\nPUT /products/{id}\nDELETE /products/{id}`
+      },
+      basicSql: {
+        eyebrow: 'Database • SQL',
+        goal: 'Read simple queries and understand how filters change returned rows.',
+        next: 'Write SELECT queries with WHERE and ORDER BY for a product table.',
+        concepts: ['tables', 'columns', 'SELECT', 'WHERE', 'ORDER BY'],
+        code: `SELECT name, price, stock\nFROM products\nWHERE stock > 0\nORDER BY price DESC;`
+      },
+      guidedProject: {
+        eyebrow: 'Project • integration',
+        goal: 'Connect UI, state, backend and persistence in one small feature.',
+        next: 'Build a task or product feature from user story to working flow.',
+        concepts: ['user story', 'frontend state', 'API contract', 'data persistence'],
+        code: `User story:\nAs a student, I want to save my progress,\nso I can continue the path later.`
+      },
+      authentication: {
+        eyebrow: 'Security • auth',
+        goal: 'Understand the difference between identity, session and authorization.',
+        next: 'Draw the login flow from credentials to protected route access.',
+        concepts: ['credentials', 'session', 'token', 'protected route'],
+        code: `POST /login\nSet-Cookie: session=...\nGET /dashboard\nAuthorization check: required`
+      },
+      realDatabase: {
+        eyebrow: 'Database • modeling',
+        goal: 'Plan tables, fields and relationships before writing code.',
+        next: 'Model users, lessons and progress as relational tables.',
+        concepts: ['entities', 'relationships', 'primary keys', 'foreign keys'],
+        code: `users(id, name, email)\nlessons(id, slug, title)\nprogress(user_id, lesson_id, completed_at)`
+      },
+      testing: {
+        eyebrow: 'Quality • tests',
+        goal: 'Write tests for logic that should not break during refactors.',
+        next: 'Create test cases for progress percentage, answer scoring and lesson filtering.',
+        concepts: ['unit tests', 'edge cases', 'expected result', 'regression safety'],
+        code: `expect(getProgressPercent(['html'], 4)).toBe(25);`
+      },
+      security: {
+        eyebrow: 'Security • web',
+        goal: 'Think about risk before trusting input or exposing data.',
+        next: 'Create a checklist for input validation, auth checks and safe output.',
+        concepts: ['validation', 'authorization', 'safe output', 'least privilege'],
+        code: `if (!currentUser) {\n  throw new Error('Authentication required');\n}\n\nif (!canAccess(currentUser, resource)) {\n  throw new Error('Access denied');\n}`
+      },
+      deploy: {
+        eyebrow: 'DevOps • deploy',
+        goal: 'Prepare the app to run outside the local machine.',
+        next: 'Check build command, environment variables, logs and rollback plan.',
+        concepts: ['build', 'environment variables', 'logs', 'rollback'],
+        code: `npm run build\nPUBLIC_API_URL=https://api.example.com\nNODE_ENV=production`
+      },
+      studentDashboard: {
+        eyebrow: 'Product • dashboard',
+        goal: 'Turn progress data into useful learning insights.',
+        next: 'Design cards for completed lessons, weak areas and next recommended module.',
+        concepts: ['metrics', 'progress', 'recommendations', 'visual hierarchy'],
+        code: `const dashboard = {\n  completedLessons: 8,\n  weakArea: 'JavaScript Logic',\n  nextModule: 'DOM and Events'\n};`
+      }
     },
 
     practice: {
@@ -349,14 +449,114 @@ export const copy = {
     officialDocumentation: 'Documentação oficial',
 
     intermediatePage: {
-      eyebrow: 'Nível intermediário',
-      title: 'Reservado para a próxima etapa do produto',
-      description: 'Esta trilha vai incluir formulários, DOM, APIs, persistência leve e desafios maiores.'
+      eyebrow: 'Trilha intermediária',
+      title: 'Construa habilidades de aplicação real',
+      description: 'Avance além do básico com DOM, formulários, APIs, persistência e estrutura de projeto guiado.'
     },
     advancedPage: {
-      eyebrow: 'Nível avançado',
-      title: 'Reservado para a evolução do produto',
-      description: 'Esta trilha vai incluir autenticação, banco de dados, dashboards, gamificação e um editor de código mais forte.'
+      eyebrow: 'Trilha avançada',
+      title: 'Chegue mais perto de código pronto para produção',
+      description: 'Pratique autenticação, banco de dados, testes, segurança, deploy e pensamento de dashboard.'
+    },
+
+    pathLabels: {
+      intermediatePath: 'Trilha intermediária',
+      advancedPath: 'Trilha avançada',
+      moduleLabel: 'Módulo {index}',
+      estimatedTime: '{minutes}min',
+      openModule: 'Abrir módulo',
+      overview: 'Visão geral',
+      whatYouPractice: 'O que você pratica',
+      starterCode: 'Código inicial',
+      nextStep: 'Próximo passo',
+      modulePlan: 'Plano do módulo'
+    },
+
+    pathLessons: {
+      domEvents: {
+        eyebrow: 'JavaScript • DOM',
+        goal: 'Conecte uma ação do usuário a uma mudança visível na interface.',
+        next: 'Construa um contador, menu toggle ou filtro usando event listeners e estado.',
+        concepts: ['querySelector', 'addEventListener', 'mudanças de estado', 'feedback renderizado'],
+        code: `const button = document.querySelector('[data-action]');\nconst output = document.querySelector('[data-output]');\nlet clicks = 0;\n\nbutton?.addEventListener('click', () => {\n  clicks += 1;\n  if (output) output.textContent = ` + "`Clicked ${clicks} times`" + `;\n});`
+      },
+      formsValidation: {
+        eyebrow: 'Frontend • formulários',
+        goal: 'Valide campos antes de enviar dados e explique feedback útil para o usuário.',
+        next: 'Crie um formulário de cadastro com campos obrigatórios, validação de email e mensagens claras.',
+        concepts: ['campos obrigatórios', 'formato de email', 'mensagens de erro', 'tratamento do submit'],
+        code: `function validateEmail(email: string) {\n  return email.includes('@') && email.includes('.');\n}\n\nconst formState = {\n  name: 'Student',\n  email: 'student@example.com'\n};`
+      },
+      apisJson: {
+        eyebrow: 'JavaScript • APIs',
+        goal: 'Entenda o ciclo da requisição: carregando, sucesso e erro.',
+        next: 'Busque uma lista de itens, mostre estado de carregamento e renderize uma mensagem de erro.',
+        concepts: ['fetch', 'parse de JSON', 'estado de carregamento', 'estado de erro'],
+        code: `async function loadLessons() {\n  const response = await fetch('/api/lessons');\n  if (!response.ok) throw new Error('Request failed');\n  return response.json();\n}`
+      },
+      phpCrud: {
+        eyebrow: 'PHP • CRUD',
+        goal: 'Mapeie cada ação CRUD para uma rota, requisição e resposta.',
+        next: 'Desenhe um endpoint simples de produtos com criar, listar, atualizar e excluir.',
+        concepts: ['create', 'read', 'update', 'delete', 'métodos HTTP'],
+        code: `GET /products\nPOST /products\nPUT /products/{id}\nDELETE /products/{id}`
+      },
+      basicSql: {
+        eyebrow: 'Banco • SQL',
+        goal: 'Leia queries simples e entenda como filtros mudam as linhas retornadas.',
+        next: 'Escreva SELECTs com WHERE e ORDER BY para uma tabela de produtos.',
+        concepts: ['tabelas', 'colunas', 'SELECT', 'WHERE', 'ORDER BY'],
+        code: `SELECT name, price, stock\nFROM products\nWHERE stock > 0\nORDER BY price DESC;`
+      },
+      guidedProject: {
+        eyebrow: 'Projeto • integração',
+        goal: 'Conecte UI, estado, backend e persistência em uma pequena funcionalidade.',
+        next: 'Construa uma feature de tarefas ou produtos da história de usuário até o fluxo funcionando.',
+        concepts: ['história de usuário', 'estado no frontend', 'contrato de API', 'persistência de dados'],
+        code: `User story:\nAs a student, I want to save my progress,\nso I can continue the path later.`
+      },
+      authentication: {
+        eyebrow: 'Segurança • auth',
+        goal: 'Entenda a diferença entre identidade, sessão e autorização.',
+        next: 'Desenhe o fluxo de login das credenciais até o acesso a uma rota protegida.',
+        concepts: ['credenciais', 'sessão', 'token', 'rota protegida'],
+        code: `POST /login\nSet-Cookie: session=...\nGET /dashboard\nAuthorization check: required`
+      },
+      realDatabase: {
+        eyebrow: 'Banco • modelagem',
+        goal: 'Planeje tabelas, campos e relacionamentos antes de escrever código.',
+        next: 'Modele usuários, aulas e progresso como tabelas relacionais.',
+        concepts: ['entidades', 'relacionamentos', 'chaves primárias', 'chaves estrangeiras'],
+        code: `users(id, name, email)\nlessons(id, slug, title)\nprogress(user_id, lesson_id, completed_at)`
+      },
+      testing: {
+        eyebrow: 'Qualidade • testes',
+        goal: 'Escreva testes para lógicas que não podem quebrar em refactors.',
+        next: 'Crie casos de teste para percentual de progresso, pontuação de resposta e filtro de aulas.',
+        concepts: ['testes unitários', 'casos de borda', 'resultado esperado', 'segurança contra regressão'],
+        code: `expect(getProgressPercent(['html'], 4)).toBe(25);`
+      },
+      security: {
+        eyebrow: 'Segurança • web',
+        goal: 'Pense em risco antes de confiar em entrada ou expor dados.',
+        next: 'Crie um checklist para validação de entrada, autorização e saída segura.',
+        concepts: ['validação', 'autorização', 'saída segura', 'menor privilégio'],
+        code: `if (!currentUser) {\n  throw new Error('Authentication required');\n}\n\nif (!canAccess(currentUser, resource)) {\n  throw new Error('Access denied');\n}`
+      },
+      deploy: {
+        eyebrow: 'DevOps • deploy',
+        goal: 'Prepare a aplicação para rodar fora da máquina local.',
+        next: 'Confira comando de build, variáveis de ambiente, logs e plano de rollback.',
+        concepts: ['build', 'variáveis de ambiente', 'logs', 'rollback'],
+        code: `npm run build\nPUBLIC_API_URL=https://api.example.com\nNODE_ENV=production`
+      },
+      studentDashboard: {
+        eyebrow: 'Produto • dashboard',
+        goal: 'Transforme dados de progresso em insights úteis de aprendizado.',
+        next: 'Desenhe cards de aulas concluídas, pontos fracos e próximo módulo recomendado.',
+        concepts: ['métricas', 'progresso', 'recomendações', 'hierarquia visual'],
+        code: `const dashboard = {\n  completedLessons: 8,\n  weakArea: 'JavaScript Logic',\n  nextModule: 'DOM and Events'\n};`
+      }
     },
 
     practice: {

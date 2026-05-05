@@ -1,4 +1,6 @@
+import { describe, expect, it } from 'vitest';
 import type { Lesson } from '$lib/data/lessons';
+import { filterLessonsByArea, filterLessonsByLevel, getTotalMinutes } from '../lessonFilters';
 
 const mockText = (text: string) => ({
   en: text,
@@ -37,3 +39,18 @@ const lessons: Lesson[] = [
     docs: []
   }
 ];
+
+describe('lessonFilters', () => {
+  it('filters lessons by level', () => {
+    expect(filterLessonsByLevel(lessons, 'basic')).toHaveLength(2);
+    expect(filterLessonsByLevel(lessons, 'intermediate')).toHaveLength(1);
+  });
+
+  it('filters lessons by area', () => {
+    expect(filterLessonsByArea(lessons, 'JavaScript')).toEqual([lessons[1]]);
+  });
+
+  it('sums estimated minutes', () => {
+    expect(getTotalMinutes(lessons)).toBe(90);
+  });
+});

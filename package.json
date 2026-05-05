@@ -13,7 +13,7 @@
     "validate": "npm run check && npm run test:run"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^6.0.0",
+    "@sveltejs/adapter-auto": "^6.1.1",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
     "@tailwindcss/vite": "^4.1.0",

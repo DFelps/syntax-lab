@@ -231,6 +231,235 @@ export const lessons: Lesson[] = [
       { label: 'Git Book', url: 'https://git-scm.com/book/en/v2' },
       { label: 'Git Reference', url: 'https://git-scm.com/docs' }
     ]
+  },
+
+  {
+    slug: 'dom-events',
+    title: { en: 'DOM and Events', pt: 'DOM e Eventos' },
+    level: 'intermediate',
+    area: 'JavaScript',
+    summary: {
+      en: 'Read elements, handle user actions and update the page without reloading.',
+      pt: 'Leia elementos, trate ações do usuário e atualize a página sem recarregar.'
+    },
+    interaction: {
+      en: 'Event-driven UI flow with state changes.',
+      pt: 'Fluxo de interface orientado a eventos com mudanças de estado.'
+    },
+    estimatedMinutes: 45,
+    docs: [
+      { label: 'MDN DOM', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model' },
+      { label: 'MDN Events', url: 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events' }
+    ]
+  },
+  {
+    slug: 'forms-validation',
+    title: { en: 'Forms and Validation', pt: 'Formulários e Validação' },
+    level: 'intermediate',
+    area: 'Frontend',
+    summary: {
+      en: 'Collect input, validate values and show useful feedback before submitting data.',
+      pt: 'Colete dados, valide valores e mostre feedback útil antes de enviar informações.'
+    },
+    interaction: {
+      en: 'Validation checklist for realistic form fields.',
+      pt: 'Checklist de validação para campos realistas de formulário.'
+    },
+    estimatedMinutes: 50,
+    docs: [
+      { label: 'MDN Forms', url: 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms' },
+      { label: 'MDN Constraint Validation', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation' }
+    ]
+  },
+  {
+    slug: 'apis-json',
+    title: { en: 'APIs and JSON', pt: 'APIs e JSON' },
+    level: 'intermediate',
+    area: 'JavaScript',
+    summary: {
+      en: 'Fetch data, understand JSON responses and handle loading and error states.',
+      pt: 'Busque dados, entenda respostas JSON e trate estados de carregamento e erro.'
+    },
+    interaction: {
+      en: 'Request lifecycle map: loading, success and error.',
+      pt: 'Mapa do ciclo de requisição: carregando, sucesso e erro.'
+    },
+    estimatedMinutes: 55,
+    docs: [
+      { label: 'MDN Fetch API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API' },
+      { label: 'MDN JSON', url: 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON' }
+    ]
+  },
+  {
+    slug: 'php-crud',
+    title: { en: 'PHP CRUD', pt: 'CRUD com PHP' },
+    level: 'intermediate',
+    area: 'PHP',
+    summary: {
+      en: 'Create, read, update and delete records using a simple backend flow.',
+      pt: 'Crie, leia, atualize e exclua registros usando um fluxo simples de backend.'
+    },
+    interaction: {
+      en: 'CRUD operation map with request and response thinking.',
+      pt: 'Mapa de operações CRUD com raciocínio de requisição e resposta.'
+    },
+    estimatedMinutes: 60,
+    docs: [
+      { label: 'PHP Manual', url: 'https://www.php.net/manual/en/index.php' },
+      { label: 'PHP PDO', url: 'https://www.php.net/manual/en/book.pdo.php' }
+    ]
+  },
+  {
+    slug: 'basic-sql',
+    title: { en: 'Basic SQL', pt: 'SQL Básico' },
+    level: 'intermediate',
+    area: 'Database',
+    summary: {
+      en: 'Model tables, select data and understand the first query patterns.',
+      pt: 'Modele tabelas, selecione dados e entenda os primeiros padrões de consulta.'
+    },
+    interaction: {
+      en: 'Query reading practice with SELECT, WHERE and ORDER BY.',
+      pt: 'Prática de leitura de queries com SELECT, WHERE e ORDER BY.'
+    },
+    estimatedMinutes: 50,
+    docs: [
+      { label: 'SQLite SELECT', url: 'https://www.sqlite.org/lang_select.html' },
+      { label: 'PostgreSQL SELECT', url: 'https://www.postgresql.org/docs/current/sql-select.html' }
+    ]
+  },
+  {
+    slug: 'guided-project',
+    title: { en: 'Complete Guided Project', pt: 'Projeto Guiado Completo' },
+    level: 'intermediate',
+    area: 'Project',
+    summary: {
+      en: 'Connect frontend, backend and persistence in a small complete feature.',
+      pt: 'Conecte frontend, backend e persistência em uma funcionalidade pequena e completa.'
+    },
+    interaction: {
+      en: 'Feature breakdown from user story to implementation.',
+      pt: 'Quebra de funcionalidade da história de usuário até a implementação.'
+    },
+    estimatedMinutes: 75,
+    docs: [
+      { label: 'MDN Web Docs', url: 'https://developer.mozilla.org/en-US/' },
+      { label: 'SvelteKit Docs', url: 'https://svelte.dev/docs/kit/introduction' }
+    ]
+  },
+  {
+    slug: 'authentication',
+    title: { en: 'Authentication', pt: 'Autenticação' },
+    level: 'advanced',
+    area: 'Security',
+    summary: {
+      en: 'Understand login flow, sessions, tokens and protected routes.',
+      pt: 'Entenda fluxo de login, sessões, tokens e rotas protegidas.'
+    },
+    interaction: {
+      en: 'Auth flow map from credentials to protected access.',
+      pt: 'Mapa do fluxo de autenticação das credenciais ao acesso protegido.'
+    },
+    estimatedMinutes: 60,
+    docs: [
+      { label: 'OWASP Authentication', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html' },
+      { label: 'MDN HTTP Cookies', url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies' }
+    ]
+  },
+  {
+    slug: 'real-database',
+    title: { en: 'Real Database', pt: 'Banco de Dados Real' },
+    level: 'advanced',
+    area: 'Database',
+    summary: {
+      en: 'Move beyond local examples and design persistent relational data.',
+      pt: 'Vá além de exemplos locais e desenhe dados relacionais persistentes.'
+    },
+    interaction: {
+      en: 'Schema planning with entities, fields and relationships.',
+      pt: 'Planejamento de schema com entidades, campos e relacionamentos.'
+    },
+    estimatedMinutes: 60,
+    docs: [
+      { label: 'PostgreSQL Docs', url: 'https://www.postgresql.org/docs/' },
+      { label: 'MySQL Docs', url: 'https://dev.mysql.com/doc/' }
+    ]
+  },
+  {
+    slug: 'testing',
+    title: { en: 'Testing', pt: 'Testes' },
+    level: 'advanced',
+    area: 'Quality',
+    summary: {
+      en: 'Write automated tests for logic, components and important user flows.',
+      pt: 'Escreva testes automatizados para lógica, componentes e fluxos importantes do usuário.'
+    },
+    interaction: {
+      en: 'Test case design for happy paths and edge cases.',
+      pt: 'Desenho de casos de teste para caminhos felizes e casos de borda.'
+    },
+    estimatedMinutes: 55,
+    docs: [
+      { label: 'Vitest', url: 'https://vitest.dev/' },
+      { label: 'Testing Library', url: 'https://testing-library.com/docs/' }
+    ]
+  },
+  {
+    slug: 'security',
+    title: { en: 'Security', pt: 'Segurança' },
+    level: 'advanced',
+    area: 'Security',
+    summary: {
+      en: 'Recognize common risks and apply safer defaults in web applications.',
+      pt: 'Reconheça riscos comuns e aplique padrões mais seguros em aplicações web.'
+    },
+    interaction: {
+      en: 'Risk checklist for inputs, auth and data exposure.',
+      pt: 'Checklist de risco para entradas, autenticação e exposição de dados.'
+    },
+    estimatedMinutes: 55,
+    docs: [
+      { label: 'OWASP Top 10', url: 'https://owasp.org/www-project-top-ten/' },
+      { label: 'MDN Web Security', url: 'https://developer.mozilla.org/en-US/docs/Web/Security' }
+    ]
+  },
+  {
+    slug: 'deploy',
+    title: { en: 'Deploy', pt: 'Deploy' },
+    level: 'advanced',
+    area: 'DevOps',
+    summary: {
+      en: 'Prepare builds, configure environment variables and publish applications safely.',
+      pt: 'Prepare builds, configure variáveis de ambiente e publique aplicações com segurança.'
+    },
+    interaction: {
+      en: 'Deployment checklist from local build to production URL.',
+      pt: 'Checklist de deploy do build local até a URL de produção.'
+    },
+    estimatedMinutes: 50,
+    docs: [
+      { label: 'SvelteKit Adapters', url: 'https://svelte.dev/docs/kit/adapters' },
+      { label: 'Vite Build', url: 'https://vite.dev/guide/build' }
+    ]
+  },
+  {
+    slug: 'student-dashboard',
+    title: { en: 'Student Dashboard', pt: 'Dashboard do Aluno' },
+    level: 'advanced',
+    area: 'Product',
+    summary: {
+      en: 'Turn progress data into a useful dashboard with metrics and learning status.',
+      pt: 'Transforme dados de progresso em um dashboard útil com métricas e status de aprendizado.'
+    },
+    interaction: {
+      en: 'Dashboard planning with cards, progress and next actions.',
+      pt: 'Planejamento de dashboard com cards, progresso e próximas ações.'
+    },
+    estimatedMinutes: 65,
+    docs: [
+      { label: 'Svelte Stores', url: 'https://svelte.dev/docs/svelte/stores' },
+      { label: 'Recharts', url: 'https://recharts.org/en-US/' }
+    ]
   }
 ];
 
