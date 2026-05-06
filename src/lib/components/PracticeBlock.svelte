@@ -6,6 +6,14 @@
 
   export let practice: Practice;
 
+  type WritingGuide = {
+    title: string;
+    instruction: string;
+    placeholder: string;
+    expectedKeywords: string[];
+    modelAnswer: string;
+  };
+
   let selected: Record<number, number> = {};
   let submitted: Record<number, boolean> = {};
   let answer = '';
@@ -14,7 +22,13 @@
 
   $: t = copy[$language];
   $: storageKey = `syntaxlab-practice-${practice.slug}`;
-  $: expectedKeywords = practice.challenge.expectedKeywords[$language];
+  $: writingGuides = t.writingGuides as Record<string, WritingGuide>;
+  $: writingGuide = writingGuides[practice.slug];
+  $: challengeTitle = writingGuide?.title ?? practice.challenge.title[$language];
+  $: challengeInstruction = writingGuide?.instruction ?? practice.challenge.instruction[$language];
+  $: challengePlaceholder = writingGuide?.placeholder ?? practice.challenge.placeholder[$language];
+  $: modelAnswer = writingGuide?.modelAnswer ?? practice.challenge.modelAnswer[$language];
+  $: expectedKeywords = writingGuide?.expectedKeywords ?? practice.challenge.expectedKeywords[$language];
   $: completedQuiz = practice.quiz.filter((item, index) => submitted[index] && selected[index] === item.answer).length;
   $: challengeEvaluation = evaluateChallengeAnswer(answer, expectedKeywords);
   $: challengeScore = challengeEvaluation.score;
@@ -48,6 +62,27 @@
     localStorage.setItem(storageKey, answer);
     savedReflection = answer;
     feedback = t.practice.savedLocal;
+  }
+
+  function useTemplate() {
+    answer = answer.trim() ? answer : t.guidedWriting.template;
+    feedback = t.practice.templateAdded;
+  }
+
+  function addHint() {
+    const missing = challengeEvaluation.matches.find((match) => !match.matched)?.keyword;
+    const hint = missing ? `${t.guidedWriting.hints[0]} (${missing})` : t.guidedWriting.hints[1];
+    answer = `${answer.trim()}\n${hint}`.trim();
+    feedback = t.practice.hintAdded;
+  }
+
+  function addStarter(starter: string) {
+    answer = `${answer.trim()}\n${starter} `.trimStart();
+  }
+
+  function clearAnswer() {
+    answer = '';
+    feedback = '';
   }
 </script>
 
@@ -104,29 +139,72 @@
 
   <div class="challenge-card grid">
     <div>
-      <h3>{practice.challenge.title[$language]}</h3>
-      <p class="muted">{practice.challenge.instruction[$language]}</p>
+      <div class="badge">{t.practice.writingAssistant}</div>
+      <h3>{challengeTitle}</h3>
+      <p class="muted">{challengeInstruction}</p>
     </div>
-    <textarea rows="7" bind:value={answer} placeholder={practice.challenge.placeholder[$language]}></textarea>
+
+    <div class="helper-card">
+      <div class="label">{t.practice.suggestedSteps}</div>
+      <div class="pill-list">
+        {#each t.guidedWriting.hints as hint}
+          <span>{hint}</span>
+        {/each}
+      </div>
+    </div>
+
+    <div class="challenge-actions">
+      <button type="button" class="secondary" on:click={useTemplate}>{t.practice.useTemplate}</button>
+      <button type="button" class="secondary" on:click={addHint}>{t.practice.addHint}</button>
+      <button type="button" class="secondary" on:click={clearAnswer}>{t.practice.clearAnswer}</button>
+    </div>
+
+    <div class="pill-list">
+      {#each t.guidedWriting.sentenceStarters as starter}
+        <button type="button" class="small-button" on:click={() => addStarter(starter)}>{starter}</button>
+      {/each}
+    </div>
+
+    <textarea class="guided-textarea" rows="9" bind:value={answer} placeholder={challengePlaceholder}></textarea>
+
     <div class="challenge-actions">
       <button type="button" on:click={checkChallenge}>{t.practice.checkAttempt}</button>
       <button type="button" class="secondary" on:click={saveReflection}>{t.practice.saveAnswer}</button>
     </div>
+
     {#if feedback}
       <div class="terminal-output">{feedback}</div>
     {/if}
+
     <div>
       <div class="label">{answerCoverage}</div>
       <div class="progress"><span style={`width:${challengeScore}%`}></span></div>
     </div>
+
     <div class="pill-list">
       {#each expectedKeywords as keyword}
         <span class={challengeMatched.includes(keyword) ? 'keyword-hit' : ''}>{keyword}</span>
       {/each}
     </div>
+
     <details>
       <summary>{t.practice.showModelAnswer}</summary>
-      <pre>{practice.challenge.modelAnswer[$language]}</pre>
+      <pre>{modelAnswer}</pre>
     </details>
   </div>
 </section>
+
+<style>
+  .helper-card {
+    border: 1px dashed var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.03);
+  }
+
+  .guided-textarea {
+    min-height: 13rem;
+    line-height: 1.6;
+    resize: vertical;
+  }
+</style>
