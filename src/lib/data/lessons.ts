@@ -102,6 +102,24 @@ export const lessons: Lesson[] = [
     estimatedMinutes: 40,
     docs: cDocs
   },
+
+  {
+    slug: 'c-functions-decision',
+    title: { en: 'Functions with Decisions', pt: 'Funções com Decisão' },
+    level: 'basic',
+    area: 'C',
+    summary: {
+      en: 'Combine reusable functions with if/else logic and conditional returns.',
+      pt: 'Combine funções reutilizáveis com lógica de if/else e retornos condicionais.'
+    },
+    interaction: {
+      en: 'Decision-based function playground with comparisons and validation.',
+      pt: 'Playground de funções com decisão, comparações e validação.'
+    },
+    estimatedMinutes: 40,
+    docs: cDocs
+  },
+
   {
     slug: 'c-arrays',
     title: { en: 'Arrays and Indexes', pt: 'Arrays e Índices' },
