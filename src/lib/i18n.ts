@@ -69,15 +69,130 @@ export const copy = {
     lessonLabel: 'Lesson {index}',
     officialDocumentation: 'Official documentation',
 
+    lessonGuide: {
+      title: 'How to study this lesson',
+      steps: [
+        'Understand the idea before syntax',
+        'Change the example and observe the result',
+        'Answer the quiz',
+        'Write the mental flow in your own words'
+      ]
+    },
+
+    studyNote: {
+      title: 'Beginner rule',
+      text: 'Do not try to memorize the code first. Read the program as a sequence of steps: what enters, what changes and what appears on the screen.'
+    },
+
     intermediatePage: {
-      eyebrow: 'Intermediate level',
-      title: 'Reserved for the next product stage',
-      description: 'This path will include forms, DOM, APIs, lightweight persistence and larger challenges.'
+      eyebrow: 'Intermediate path',
+      title: 'Build real application skills',
+      description: 'Move beyond the basics with DOM, forms, APIs, persistence and a guided project structure.'
     },
     advancedPage: {
-      eyebrow: 'Advanced level',
-      title: 'Reserved for the product evolution',
-      description: 'This path will include authentication, database work, dashboards, gamification and a stronger code editor.'
+      eyebrow: 'Advanced path',
+      title: 'Get closer to production-ready work',
+      description: 'Practice authentication, databases, testing, security, deployment and dashboard thinking.'
+    },
+
+    pathLabels: {
+      intermediatePath: 'Intermediate path',
+      advancedPath: 'Advanced path',
+      moduleLabel: 'Module {index}',
+      estimatedTime: '{minutes}min',
+      openModule: 'Open module',
+      overview: 'Overview',
+      whatYouPractice: 'What you practice',
+      starterCode: 'Starter code',
+      nextStep: 'Next step',
+      modulePlan: 'Module plan'
+    },
+
+    pathLessons: {
+      domEvents: {
+        eyebrow: 'JavaScript • DOM',
+        goal: 'Connect a user action to a visible interface change.',
+        next: 'Build a small counter, menu toggle or filter using event listeners and state.',
+        concepts: ['querySelector', 'addEventListener', 'state changes', 'rendering feedback'],
+        code: `const button = document.querySelector('[data-action]');\nconst output = document.querySelector('[data-output]');\nlet clicks = 0;\n\nbutton?.addEventListener('click', () => {\n  clicks += 1;\n  if (output) output.textContent = ` + "`Clicked ${clicks} times`" + `;\n});`
+      },
+      formsValidation: {
+        eyebrow: 'Frontend • forms',
+        goal: 'Validate fields before sending data and explain useful feedback to the user.',
+        next: 'Create a sign-up form with required fields, email validation and clear error messages.',
+        concepts: ['required fields', 'email format', 'error messages', 'submit handling'],
+        code: `function validateEmail(email: string) {\n  return email.includes('@') && email.includes('.');\n}\n\nconst formState = {\n  name: 'Student',\n  email: 'student@example.com'\n};`
+      },
+      apisJson: {
+        eyebrow: 'JavaScript • APIs',
+        goal: 'Understand the request lifecycle: loading, success and error.',
+        next: 'Fetch a list of items, show a loading state and render a fallback error message.',
+        concepts: ['fetch', 'JSON parsing', 'loading state', 'error state'],
+        code: `async function loadLessons() {\n  const response = await fetch('/api/lessons');\n  if (!response.ok) throw new Error('Request failed');\n  return response.json();\n}`
+      },
+      phpCrud: {
+        eyebrow: 'PHP • CRUD',
+        goal: 'Map each CRUD action to a route, request and response.',
+        next: 'Design a simple products endpoint with create, list, update and delete operations.',
+        concepts: ['create', 'read', 'update', 'delete', 'HTTP methods'],
+        code: `GET /products\nPOST /products\nPUT /products/{id}\nDELETE /products/{id}`
+      },
+      basicSql: {
+        eyebrow: 'Database • SQL',
+        goal: 'Read simple queries and understand how filters change returned rows.',
+        next: 'Write SELECT queries with WHERE and ORDER BY for a product table.',
+        concepts: ['tables', 'columns', 'SELECT', 'WHERE', 'ORDER BY'],
+        code: `SELECT name, price, stock\nFROM products\nWHERE stock > 0\nORDER BY price DESC;`
+      },
+      guidedProject: {
+        eyebrow: 'Project • integration',
+        goal: 'Connect UI, state, backend and persistence in one small feature.',
+        next: 'Build a task or product feature from user story to working flow.',
+        concepts: ['user story', 'frontend state', 'API contract', 'data persistence'],
+        code: `User story:\nAs a student, I want to save my progress,\nso I can continue the path later.`
+      },
+      authentication: {
+        eyebrow: 'Security • auth',
+        goal: 'Understand the difference between identity, session and authorization.',
+        next: 'Draw the login flow from credentials to protected route access.',
+        concepts: ['credentials', 'session', 'token', 'protected route'],
+        code: `POST /login\nSet-Cookie: session=...\nGET /dashboard\nAuthorization check: required`
+      },
+      realDatabase: {
+        eyebrow: 'Database • modeling',
+        goal: 'Plan tables, fields and relationships before writing code.',
+        next: 'Model users, lessons and progress as relational tables.',
+        concepts: ['entities', 'relationships', 'primary keys', 'foreign keys'],
+        code: `users(id, name, email)\nlessons(id, slug, title)\nprogress(user_id, lesson_id, completed_at)`
+      },
+      testing: {
+        eyebrow: 'Quality • tests',
+        goal: 'Write tests for logic that should not break during refactors.',
+        next: 'Create test cases for progress percentage, answer scoring and lesson filtering.',
+        concepts: ['unit tests', 'edge cases', 'expected result', 'regression safety'],
+        code: `expect(getProgressPercent(['html'], 4)).toBe(25);`
+      },
+      security: {
+        eyebrow: 'Security • web',
+        goal: 'Think about risk before trusting input or exposing data.',
+        next: 'Create a checklist for input validation, auth checks and safe output.',
+        concepts: ['validation', 'authorization', 'safe output', 'least privilege'],
+        code: `if (!currentUser) {\n  throw new Error('Authentication required');\n}\n\nif (!canAccess(currentUser, resource)) {\n  throw new Error('Access denied');\n}`
+      },
+      deploy: {
+        eyebrow: 'DevOps • deploy',
+        goal: 'Prepare the app to run outside the local machine.',
+        next: 'Check build command, environment variables, logs and rollback plan.',
+        concepts: ['build', 'environment variables', 'logs', 'rollback'],
+        code: `npm run build\nPUBLIC_API_URL=https://api.example.com\nNODE_ENV=production`
+      },
+      studentDashboard: {
+        eyebrow: 'Product • dashboard',
+        goal: 'Turn progress data into useful learning insights.',
+        next: 'Design cards for completed lessons, weak areas and next recommended module.',
+        concepts: ['metrics', 'progress', 'recommendations', 'visual hierarchy'],
+        code: `const dashboard = {\n  completedLessons: 8,\n  weakArea: 'JavaScript Logic',\n  nextModule: 'DOM and Events'\n};`
+      }
     },
 
     practice: {
@@ -91,10 +206,115 @@ export const copy = {
       savedLocal: 'Answer saved locally in your browser.',
       answerCoverage: 'Answer coverage: {score}%',
       showModelAnswer: 'Show model answer after trying',
+      writingAssistant: 'Writing assistant',
+      useTemplate: 'Use template',
+      addHint: 'Add hint',
+      clearAnswer: 'Clear',
+      suggestedSteps: 'Suggested steps',
+      templateAdded: 'Template added. Complete each line using your own words.',
+      hintAdded: 'Hint added. Try to finish the flow before checking the model answer.',
       feedbackEmpty: 'Write an attempt first. The goal is to think before checking the model answer.',
       feedbackPassed: 'Nice. Your answer already covers the main structure. Compare it with the model and adjust names, syntax or order if needed.',
       feedbackMissing: 'Some important parts are still missing.{missing} Try to complete the logic before opening the model answer.',
       feedbackMissingLabel: ' Missing: {items}.'
+    },
+
+
+    guidedWriting: {
+      template: 'Input: \nProcessing: \nOutput: ',
+      hints: [
+        'Start by naming what information the program receives.',
+        'Then describe what the program does with that information.',
+        'Finish with what the user sees on the screen.'
+      ],
+      sentenceStarters: ['Input:', 'Processing:', 'Output:', 'The program receives', 'The program shows']
+    },
+
+    writingGuides: {
+      cIntro: {
+        title: 'Write the mental flow',
+        instruction: 'Write a 3-line flow for a program that receives a student name, receives a study goal and shows a message on the screen.',
+        placeholder: 'Input: student name and study goal\nProcessing: prepare the message\nOutput: show the message with printf',
+        expectedKeywords: ['input', 'name', 'goal', 'processing', 'output', 'printf'],
+        modelAnswer: 'Input: the program receives a student name and a study goal.\nProcessing: it stores those values and prepares a message.\nOutput: it prints the greeting, the goal and the study time on the terminal.'
+      },
+      cVariables: {
+        title: 'Explain the value changes',
+        instruction: 'Describe how a program receives numeric values, calculates a subtotal and then applies a percentage discount.',
+        placeholder: 'Input: price, quantity and discount\nProcessing: multiply price by quantity, then apply discount\nOutput: show subtotal and final total',
+        expectedKeywords: ['input', 'price', 'quantity', 'discount', 'subtotal', 'output'],
+        modelAnswer: 'Input: the program receives price, quantity and discount.\nProcessing: it calculates subtotal and subtracts the discount percentage.\nOutput: it shows the subtotal and final total.'
+      },
+      cIfElse: {
+        title: 'Write the decision flow',
+        instruction: 'Explain how a program uses grade and attendance to decide if a student is approved, in recovery or failed.',
+        placeholder: 'Input: grade and attendance\nProcessing: compare values with if/else rules\nOutput: show approved, recovery or failed',
+        expectedKeywords: ['input', 'grade', 'attendance', 'if', 'else', 'output'],
+        modelAnswer: 'Input: the program receives grade and attendance.\nProcessing: it uses if/else to compare the values with the approval rules.\nOutput: it prints approved, recovery or failed.'
+      },
+      cLoops: {
+        title: 'Write the repetition flow',
+        instruction: 'Explain how a loop repeats a calculation until it reaches the selected number of repetitions.',
+        placeholder: 'Input: number and repetitions\nProcessing: repeat with a counter\nOutput: show each step and the final sum',
+        expectedKeywords: ['input', 'number', 'repeat', 'counter', 'sum', 'output'],
+        modelAnswer: 'Input: the program receives a number and how many times it should repeat.\nProcessing: a counter controls the loop and updates the sum.\nOutput: the program shows each step and the final result.'
+      },
+      cFunctions: {
+        title: 'Write the function flow',
+        instruction: 'Explain how a function receives values, applies a rule and returns a result.',
+        placeholder: 'Input: base amount and percent\nProcessing: function applies discount or increase\nOutput: return calculated value',
+        expectedKeywords: ['input', 'function', 'parameter', 'return', 'result', 'output'],
+        modelAnswer: 'Input: the function receives the amount and percent as parameters.\nProcessing: it applies the selected rule.\nOutput: it returns the calculated result to the main program.'
+      },
+      cArrays: {
+        title: 'Write the array flow',
+        instruction: 'Explain how a program reads a list of values, accesses indexes and calculates summary values.',
+        placeholder: 'Input: list of values and selected index\nProcessing: read positions, sum values and calculate average\nOutput: show selected value, sum and average',
+        expectedKeywords: ['input', 'array', 'index', 'sum', 'average', 'output'],
+        modelAnswer: 'Input: the program receives a list of values and an index.\nProcessing: it reads positions, calculates the sum and average.\nOutput: it shows the selected value, total sum and average.'
+      },
+      html: {
+        title: 'Describe the page structure',
+        instruction: 'Explain the role of each HTML block in a simple card.',
+        placeholder: 'Input: title, description and highlight\nProcessing: place content inside semantic tags\nOutput: render the card in the browser',
+        expectedKeywords: ['title', 'description', 'tag', 'structure', 'browser', 'output'],
+        modelAnswer: 'Input: the page receives text content such as title, description and highlight.\nProcessing: HTML organizes that content using tags.\nOutput: the browser renders a structured card.'
+      },
+      css: {
+        title: 'Explain the layout rule',
+        instruction: 'Describe how flexbox changes the position of items on the screen.',
+        placeholder: 'Input: alignment goal\nProcessing: choose justify-content and alignment rules\nOutput: items move to the expected position',
+        expectedKeywords: ['input', 'flexbox', 'justify', 'align', 'position', 'output'],
+        modelAnswer: 'Input: the layout has a target alignment.\nProcessing: CSS uses flexbox properties to control spacing and position.\nOutput: the items appear in the expected place.'
+      },
+      javascript: {
+        title: 'Write the browser decision flow',
+        instruction: 'Explain how JavaScript receives values, checks conditions and changes the displayed message.',
+        placeholder: 'Input: temperature and rain status\nProcessing: compare values with conditions\nOutput: show the recommended action',
+        expectedKeywords: ['input', 'condition', 'compare', 'if', 'message', 'output'],
+        modelAnswer: 'Input: JavaScript receives values from the interface.\nProcessing: it checks conditions and chooses a branch.\nOutput: it updates the message shown to the user.'
+      },
+      jsLogic: {
+        title: 'Explain the logical expression',
+        instruction: 'Describe how multiple conditions work together to unlock a result.',
+        placeholder: 'Input: age, account and quiz status\nProcessing: combine conditions with logical operators\nOutput: unlock or show what is missing',
+        expectedKeywords: ['input', 'condition', 'and', 'or', 'true', 'output'],
+        modelAnswer: 'Input: the program receives age, account and quiz status.\nProcessing: it combines conditions with logical operators.\nOutput: it unlocks the next challenge or explains what is missing.'
+      },
+      php: {
+        title: 'Write the server response flow',
+        instruction: 'Explain how PHP prepares text and chooses a message with if/else.',
+        placeholder: 'Input: student name, module and completed status\nProcessing: build messages and check completion\nOutput: echo the response as HTML/text',
+        expectedKeywords: ['input', 'php', 'echo', 'if', 'message', 'output'],
+        modelAnswer: 'Input: PHP receives name, module and completion status.\nProcessing: it prepares text and uses if/else to choose the final message.\nOutput: it echoes the response to be rendered.'
+      },
+      gitTerminal: {
+        title: 'Explain the Git flow',
+        instruction: 'Describe how files move from local changes to a saved commit.',
+        placeholder: 'Input: changed files\nProcessing: check status, add files and commit\nOutput: project history contains a new commit',
+        expectedKeywords: ['input', 'status', 'add', 'commit', 'history', 'output'],
+        modelAnswer: 'Input: the project has changed files.\nProcessing: git status shows changes, git add stages them and git commit saves a snapshot.\nOutput: the repository history has a new commit.'
+      }
     },
 
     labs: {
@@ -106,6 +326,18 @@ export const copy = {
         goal: 'Goal',
         defaultName: 'Student',
         defaultGoal: 'practice programming logic',
+        conceptTitle: 'The idea before code',
+        conceptText: 'A beginner program can be read as a tiny story: data enters, the program prepares something and the result appears on the screen.',
+        analogyTitle: 'Real-life analogy',
+        analogyText: 'Ordering food follows the same flow: you choose the meal, the restaurant prepares it and the delivery result arrives.',
+        lineByLineTitle: 'Read the code line by line',
+        lineByLine: [
+          '`char studentName[]` stores a short text value.',
+          '`int studyHours` stores a whole number.',
+          '`printf` sends text to the terminal.'
+        ],
+        microPracticeTitle: 'First small change',
+        microPracticeText: 'Change only one field at a time and watch how the output changes. This is the safest way to learn a new program.',
         output: "Hello, {name}!\nToday's goal: {goal}\nStudy time: {hours} hours"
       },
       cVariables: {
@@ -348,15 +580,130 @@ export const copy = {
     lessonLabel: 'Aula {index}',
     officialDocumentation: 'Documentação oficial',
 
+    lessonGuide: {
+      title: 'Como estudar esta aula',
+      steps: [
+        'Entenda a ideia antes da sintaxe',
+        'Altere o exemplo e observe o resultado',
+        'Responda o quiz',
+        'Escreva o fluxo mental com suas próprias palavras'
+      ]
+    },
+
+    studyNote: {
+      title: 'Regra para iniciantes',
+      text: 'Não tente decorar o código primeiro. Leia o programa como uma sequência de passos: o que entra, o que muda e o que aparece na tela.'
+    },
+
     intermediatePage: {
-      eyebrow: 'Nível intermediário',
-      title: 'Reservado para a próxima etapa do produto',
-      description: 'Esta trilha vai incluir formulários, DOM, APIs, persistência leve e desafios maiores.'
+      eyebrow: 'Trilha intermediária',
+      title: 'Construa habilidades de aplicação real',
+      description: 'Avance além do básico com DOM, formulários, APIs, persistência e estrutura de projeto guiado.'
     },
     advancedPage: {
-      eyebrow: 'Nível avançado',
-      title: 'Reservado para a evolução do produto',
-      description: 'Esta trilha vai incluir autenticação, banco de dados, dashboards, gamificação e um editor de código mais forte.'
+      eyebrow: 'Trilha avançada',
+      title: 'Chegue mais perto de código pronto para produção',
+      description: 'Pratique autenticação, banco de dados, testes, segurança, deploy e pensamento de dashboard.'
+    },
+
+    pathLabels: {
+      intermediatePath: 'Trilha intermediária',
+      advancedPath: 'Trilha avançada',
+      moduleLabel: 'Módulo {index}',
+      estimatedTime: '{minutes}min',
+      openModule: 'Abrir módulo',
+      overview: 'Visão geral',
+      whatYouPractice: 'O que você pratica',
+      starterCode: 'Código inicial',
+      nextStep: 'Próximo passo',
+      modulePlan: 'Plano do módulo'
+    },
+
+    pathLessons: {
+      domEvents: {
+        eyebrow: 'JavaScript • DOM',
+        goal: 'Conecte uma ação do usuário a uma mudança visível na interface.',
+        next: 'Construa um contador, menu toggle ou filtro usando event listeners e estado.',
+        concepts: ['querySelector', 'addEventListener', 'mudanças de estado', 'feedback renderizado'],
+        code: `const button = document.querySelector('[data-action]');\nconst output = document.querySelector('[data-output]');\nlet clicks = 0;\n\nbutton?.addEventListener('click', () => {\n  clicks += 1;\n  if (output) output.textContent = ` + "`Clicked ${clicks} times`" + `;\n});`
+      },
+      formsValidation: {
+        eyebrow: 'Frontend • formulários',
+        goal: 'Valide campos antes de enviar dados e explique feedback útil para o usuário.',
+        next: 'Crie um formulário de cadastro com campos obrigatórios, validação de email e mensagens claras.',
+        concepts: ['campos obrigatórios', 'formato de email', 'mensagens de erro', 'tratamento do submit'],
+        code: `function validateEmail(email: string) {\n  return email.includes('@') && email.includes('.');\n}\n\nconst formState = {\n  name: 'Student',\n  email: 'student@example.com'\n};`
+      },
+      apisJson: {
+        eyebrow: 'JavaScript • APIs',
+        goal: 'Entenda o ciclo da requisição: carregando, sucesso e erro.',
+        next: 'Busque uma lista de itens, mostre estado de carregamento e renderize uma mensagem de erro.',
+        concepts: ['fetch', 'parse de JSON', 'estado de carregamento', 'estado de erro'],
+        code: `async function loadLessons() {\n  const response = await fetch('/api/lessons');\n  if (!response.ok) throw new Error('Request failed');\n  return response.json();\n}`
+      },
+      phpCrud: {
+        eyebrow: 'PHP • CRUD',
+        goal: 'Mapeie cada ação CRUD para uma rota, requisição e resposta.',
+        next: 'Desenhe um endpoint simples de produtos com criar, listar, atualizar e excluir.',
+        concepts: ['create', 'read', 'update', 'delete', 'métodos HTTP'],
+        code: `GET /products\nPOST /products\nPUT /products/{id}\nDELETE /products/{id}`
+      },
+      basicSql: {
+        eyebrow: 'Banco • SQL',
+        goal: 'Leia queries simples e entenda como filtros mudam as linhas retornadas.',
+        next: 'Escreva SELECTs com WHERE e ORDER BY para uma tabela de produtos.',
+        concepts: ['tabelas', 'colunas', 'SELECT', 'WHERE', 'ORDER BY'],
+        code: `SELECT name, price, stock\nFROM products\nWHERE stock > 0\nORDER BY price DESC;`
+      },
+      guidedProject: {
+        eyebrow: 'Projeto • integração',
+        goal: 'Conecte UI, estado, backend e persistência em uma pequena funcionalidade.',
+        next: 'Construa uma feature de tarefas ou produtos da história de usuário até o fluxo funcionando.',
+        concepts: ['história de usuário', 'estado no frontend', 'contrato de API', 'persistência de dados'],
+        code: `User story:\nAs a student, I want to save my progress,\nso I can continue the path later.`
+      },
+      authentication: {
+        eyebrow: 'Segurança • auth',
+        goal: 'Entenda a diferença entre identidade, sessão e autorização.',
+        next: 'Desenhe o fluxo de login das credenciais até o acesso a uma rota protegida.',
+        concepts: ['credenciais', 'sessão', 'token', 'rota protegida'],
+        code: `POST /login\nSet-Cookie: session=...\nGET /dashboard\nAuthorization check: required`
+      },
+      realDatabase: {
+        eyebrow: 'Banco • modelagem',
+        goal: 'Planeje tabelas, campos e relacionamentos antes de escrever código.',
+        next: 'Modele usuários, aulas e progresso como tabelas relacionais.',
+        concepts: ['entidades', 'relacionamentos', 'chaves primárias', 'chaves estrangeiras'],
+        code: `users(id, name, email)\nlessons(id, slug, title)\nprogress(user_id, lesson_id, completed_at)`
+      },
+      testing: {
+        eyebrow: 'Qualidade • testes',
+        goal: 'Escreva testes para lógicas que não podem quebrar em refactors.',
+        next: 'Crie casos de teste para percentual de progresso, pontuação de resposta e filtro de aulas.',
+        concepts: ['testes unitários', 'casos de borda', 'resultado esperado', 'segurança contra regressão'],
+        code: `expect(getProgressPercent(['html'], 4)).toBe(25);`
+      },
+      security: {
+        eyebrow: 'Segurança • web',
+        goal: 'Pense em risco antes de confiar em entrada ou expor dados.',
+        next: 'Crie um checklist para validação de entrada, autorização e saída segura.',
+        concepts: ['validação', 'autorização', 'saída segura', 'menor privilégio'],
+        code: `if (!currentUser) {\n  throw new Error('Authentication required');\n}\n\nif (!canAccess(currentUser, resource)) {\n  throw new Error('Access denied');\n}`
+      },
+      deploy: {
+        eyebrow: 'DevOps • deploy',
+        goal: 'Prepare a aplicação para rodar fora da máquina local.',
+        next: 'Confira comando de build, variáveis de ambiente, logs e plano de rollback.',
+        concepts: ['build', 'variáveis de ambiente', 'logs', 'rollback'],
+        code: `npm run build\nPUBLIC_API_URL=https://api.example.com\nNODE_ENV=production`
+      },
+      studentDashboard: {
+        eyebrow: 'Produto • dashboard',
+        goal: 'Transforme dados de progresso em insights úteis de aprendizado.',
+        next: 'Desenhe cards de aulas concluídas, pontos fracos e próximo módulo recomendado.',
+        concepts: ['métricas', 'progresso', 'recomendações', 'hierarquia visual'],
+        code: `const dashboard = {\n  completedLessons: 8,\n  weakArea: 'JavaScript Logic',\n  nextModule: 'DOM and Events'\n};`
+      }
     },
 
     practice: {
@@ -370,10 +717,115 @@ export const copy = {
       savedLocal: 'Resposta salva localmente no seu navegador.',
       answerCoverage: 'Cobertura da resposta: {score}%',
       showModelAnswer: 'Mostrar resposta modelo após tentar',
+      writingAssistant: 'Assistente de escrita',
+      useTemplate: 'Usar modelo',
+      addHint: 'Adicionar dica',
+      clearAnswer: 'Limpar',
+      suggestedSteps: 'Passos sugeridos',
+      templateAdded: 'Modelo adicionado. Complete cada linha com suas próprias palavras.',
+      hintAdded: 'Dica adicionada. Tente finalizar o fluxo antes de ver a resposta modelo.',
       feedbackEmpty: 'Escreva uma tentativa primeiro. O objetivo é pensar antes de conferir a resposta modelo.',
       feedbackPassed: 'Boa. Sua resposta já cobre a estrutura principal. Compare com o modelo e ajuste nomes, sintaxe ou ordem se precisar.',
       feedbackMissing: 'Algumas partes importantes ainda estão faltando.{missing} Tente completar a lógica antes de abrir a resposta modelo.',
       feedbackMissingLabel: ' Faltando: {items}.'
+    },
+
+
+    guidedWriting: {
+      template: 'Entrada: \nProcessamento: \nSaída: ',
+      hints: [
+        'Comece nomeando qual informação o programa recebe.',
+        'Depois descreva o que o programa faz com essa informação.',
+        'Finalize com o que aparece para o usuário na tela.'
+      ],
+      sentenceStarters: ['Entrada:', 'Processamento:', 'Saída:', 'O programa recebe', 'O programa mostra']
+    },
+
+    writingGuides: {
+      cIntro: {
+        title: 'Escreva o fluxo mental',
+        instruction: 'Escreva um fluxo de 3 linhas para um programa que recebe o nome do estudante, recebe um objetivo de estudo e mostra uma mensagem na tela.',
+        placeholder: 'Entrada: nome do estudante e objetivo de estudo\nProcessamento: preparar a mensagem\nSaída: mostrar a mensagem com printf',
+        expectedKeywords: ['entrada', 'nome', 'objetivo', 'processamento', 'saída', 'printf'],
+        modelAnswer: 'Entrada: o programa recebe o nome do estudante e o objetivo de estudo.\nProcessamento: ele guarda esses valores e prepara uma mensagem.\nSaída: ele imprime no terminal a saudação, o objetivo e o tempo de estudo.'
+      },
+      cVariables: {
+        title: 'Explique as mudanças de valor',
+        instruction: 'Descreva como um programa recebe valores numéricos, calcula um subtotal e aplica um desconto percentual.',
+        placeholder: 'Entrada: preço, quantidade e desconto\nProcessamento: multiplicar preço por quantidade e aplicar desconto\nSaída: mostrar subtotal e total final',
+        expectedKeywords: ['entrada', 'preço', 'quantidade', 'desconto', 'subtotal', 'saída'],
+        modelAnswer: 'Entrada: o programa recebe preço, quantidade e desconto.\nProcessamento: ele calcula o subtotal e subtrai o percentual de desconto.\nSaída: ele mostra o subtotal e o total final.'
+      },
+      cIfElse: {
+        title: 'Escreva o fluxo de decisão',
+        instruction: 'Explique como um programa usa nota e presença para decidir se o estudante está aprovado, em recuperação ou reprovado.',
+        placeholder: 'Entrada: nota e presença\nProcessamento: comparar valores com regras if/else\nSaída: mostrar aprovado, recuperação ou reprovado',
+        expectedKeywords: ['entrada', 'nota', 'presença', 'if', 'else', 'saída'],
+        modelAnswer: 'Entrada: o programa recebe nota e presença.\nProcessamento: ele usa if/else para comparar os valores com as regras de aprovação.\nSaída: ele imprime aprovado, recuperação ou reprovado.'
+      },
+      cLoops: {
+        title: 'Escreva o fluxo de repetição',
+        instruction: 'Explique como um loop repete um cálculo até chegar na quantidade de repetições escolhida.',
+        placeholder: 'Entrada: número e repetições\nProcessamento: repetir com um contador\nSaída: mostrar cada passo e a soma final',
+        expectedKeywords: ['entrada', 'número', 'repetir', 'contador', 'soma', 'saída'],
+        modelAnswer: 'Entrada: o programa recebe um número e quantas vezes deve repetir.\nProcessamento: um contador controla o loop e atualiza a soma.\nSaída: o programa mostra cada passo e o resultado final.'
+      },
+      cFunctions: {
+        title: 'Escreva o fluxo da função',
+        instruction: 'Explique como uma função recebe valores, aplica uma regra e retorna um resultado.',
+        placeholder: 'Entrada: valor base e percentual\nProcessamento: função aplica desconto ou acréscimo\nSaída: retornar valor calculado',
+        expectedKeywords: ['entrada', 'função', 'parâmetro', 'retorno', 'resultado', 'saída'],
+        modelAnswer: 'Entrada: a função recebe valor e percentual como parâmetros.\nProcessamento: ela aplica a regra escolhida.\nSaída: ela retorna o resultado calculado para o programa principal.'
+      },
+      cArrays: {
+        title: 'Escreva o fluxo do array',
+        instruction: 'Explique como um programa lê uma lista de valores, acessa índices e calcula valores resumidos.',
+        placeholder: 'Entrada: lista de valores e índice selecionado\nProcessamento: ler posições, somar valores e calcular média\nSaída: mostrar valor selecionado, soma e média',
+        expectedKeywords: ['entrada', 'array', 'índice', 'soma', 'média', 'saída'],
+        modelAnswer: 'Entrada: o programa recebe uma lista de valores e um índice.\nProcessamento: ele lê posições, calcula a soma e a média.\nSaída: ele mostra o valor selecionado, a soma total e a média.'
+      },
+      html: {
+        title: 'Descreva a estrutura da página',
+        instruction: 'Explique o papel de cada bloco HTML em um card simples.',
+        placeholder: 'Entrada: título, descrição e destaque\nProcessamento: colocar conteúdo dentro de tags semânticas\nSaída: renderizar o card no navegador',
+        expectedKeywords: ['título', 'descrição', 'tag', 'estrutura', 'navegador', 'saída'],
+        modelAnswer: 'Entrada: a página recebe conteúdos como título, descrição e destaque.\nProcessamento: o HTML organiza esse conteúdo usando tags.\nSaída: o navegador renderiza um card estruturado.'
+      },
+      css: {
+        title: 'Explique a regra de layout',
+        instruction: 'Descreva como flexbox muda a posição dos itens na tela.',
+        placeholder: 'Entrada: objetivo de alinhamento\nProcessamento: escolher justify-content e regras de alinhamento\nSaída: itens vão para a posição esperada',
+        expectedKeywords: ['entrada', 'flexbox', 'justify', 'align', 'posição', 'saída'],
+        modelAnswer: 'Entrada: o layout tem um objetivo de alinhamento.\nProcessamento: o CSS usa propriedades de flexbox para controlar espaçamento e posição.\nSaída: os itens aparecem no lugar esperado.'
+      },
+      javascript: {
+        title: 'Escreva o fluxo de decisão no navegador',
+        instruction: 'Explique como JavaScript recebe valores, verifica condições e muda a mensagem exibida.',
+        placeholder: 'Entrada: temperatura e status de chuva\nProcessamento: comparar valores com condições\nSaída: mostrar ação recomendada',
+        expectedKeywords: ['entrada', 'condição', 'comparar', 'if', 'mensagem', 'saída'],
+        modelAnswer: 'Entrada: JavaScript recebe valores da interface.\nProcessamento: ele verifica condições e escolhe um caminho.\nSaída: ele atualiza a mensagem exibida para o usuário.'
+      },
+      jsLogic: {
+        title: 'Explique a expressão lógica',
+        instruction: 'Descreva como várias condições trabalham juntas para liberar um resultado.',
+        placeholder: 'Entrada: idade, conta e status do quiz\nProcessamento: combinar condições com operadores lógicos\nSaída: liberar ou mostrar o que falta',
+        expectedKeywords: ['entrada', 'condição', 'and', 'or', 'true', 'saída'],
+        modelAnswer: 'Entrada: o programa recebe idade, conta e status do quiz.\nProcessamento: ele combina condições com operadores lógicos.\nSaída: ele libera o próximo desafio ou explica o que falta.'
+      },
+      php: {
+        title: 'Escreva o fluxo da resposta do servidor',
+        instruction: 'Explique como PHP prepara texto e escolhe uma mensagem com if/else.',
+        placeholder: 'Entrada: nome do estudante, módulo e status de conclusão\nProcessamento: montar mensagens e verificar conclusão\nSaída: usar echo para responder como HTML/texto',
+        expectedKeywords: ['entrada', 'php', 'echo', 'if', 'mensagem', 'saída'],
+        modelAnswer: 'Entrada: PHP recebe nome, módulo e status de conclusão.\nProcessamento: ele prepara textos e usa if/else para escolher a mensagem final.\nSaída: ele usa echo para renderizar a resposta.'
+      },
+      gitTerminal: {
+        title: 'Explique o fluxo do Git',
+        instruction: 'Descreva como arquivos saem de mudanças locais para um commit salvo.',
+        placeholder: 'Entrada: arquivos alterados\nProcessamento: verificar status, adicionar arquivos e criar commit\nSaída: histórico do projeto contém um novo commit',
+        expectedKeywords: ['entrada', 'status', 'add', 'commit', 'histórico', 'saída'],
+        modelAnswer: 'Entrada: o projeto tem arquivos alterados.\nProcessamento: git status mostra as mudanças, git add prepara os arquivos e git commit salva um registro.\nSaída: o histórico do repositório passa a ter um novo commit.'
+      }
     },
 
     labs: {
@@ -385,6 +837,18 @@ export const copy = {
         goal: 'Objetivo',
         defaultName: 'Estudante',
         defaultGoal: 'praticar lógica de programação',
+        conceptTitle: 'A ideia antes do código',
+        conceptText: 'Um programa iniciante pode ser lido como uma pequena história: dados entram, o programa prepara algo e o resultado aparece na tela.',
+        analogyTitle: 'Analogia do dia a dia',
+        analogyText: 'Pedir comida segue o mesmo fluxo: você escolhe o pedido, o restaurante prepara e o resultado chega na entrega.',
+        lineByLineTitle: 'Leia o código linha por linha',
+        lineByLine: [
+          '`char studentName[]` guarda um texto curto.',
+          '`int studyHours` guarda um número inteiro.',
+          '`printf` envia texto para o terminal.'
+        ],
+        microPracticeTitle: 'Primeira mudança pequena',
+        microPracticeText: 'Altere apenas um campo por vez e observe como a saída muda. Esse é o jeito mais seguro de aprender um programa novo.',
         output: 'Olá, {name}!\nObjetivo de hoje: {goal}\nTempo de estudo: {hours} horas'
       },
       cVariables: {

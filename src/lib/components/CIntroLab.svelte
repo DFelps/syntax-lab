@@ -19,6 +19,32 @@
   <h2>{t.title}</h2>
 
   <div class="split">
+    <div class="card compact-card">
+      <div class="label">{t.conceptTitle}</div>
+      <p class="muted">{t.conceptText}</p>
+    </div>
+
+    <div class="card compact-card">
+      <div class="label">{t.analogyTitle}</div>
+      <p class="muted">{t.analogyText}</p>
+    </div>
+  </div>
+
+  <div class="card compact-card">
+    <div class="label">{t.lineByLineTitle}</div>
+    <div class="pill-list">
+      {#each t.lineByLine as line}
+        <span>{line}</span>
+      {/each}
+    </div>
+  </div>
+
+  <div class="card compact-card">
+    <div class="label">{t.microPracticeTitle}</div>
+    <p class="muted">{t.microPracticeText}</p>
+  </div>
+
+  <div class="split">
     <label>
       <div class="label">{t.studentName}</div>
       <input bind:value={studentName} placeholder={t.defaultName} />

@@ -30,51 +30,124 @@ export type Practice = {
 export const practiceBySlug: Record<string, Practice> = {
   'c-intro': {
     slug: 'c-intro',
-    title: { en: 'Active practice: input, processing and output', pt: 'Prática ativa: entrada, processamento e saída' },
-    prompt: {
-      en: 'Before moving on, explain the program flow in your own words. The goal is to read C as steps, not memorize code.',
-      pt: 'Antes de avançar, explique o fluxo do programa com suas próprias palavras. O objetivo é ler C como passos, não memorizar código.'
+
+    title: {
+      en: 'Active practice: input, processing and output',
+      pt: 'Prática ativa: entrada, processamento e saída'
     },
+
+    prompt: {
+      en: 'Programming starts with a simple idea: receive information, process it and display a result.',
+      pt: 'Programação começa com uma ideia simples: receber informações, processar e mostrar um resultado.'
+    },
+
     checkpoints: [
-      { en: 'Identify program input', pt: 'Identificar a entrada do programa' },
-      { en: 'Separate processing from output', pt: 'Separar processamento de saída' },
-      { en: 'Predict terminal output', pt: 'Prever a saída no terminal' }
-    ],
-    quiz: [
       {
-        question: { en: 'In a simple program, which part represents output?', pt: 'Em um programa simples, qual parte representa a saída?' },
-        options: [
-          { en: 'User input', pt: 'Entrada do usuário' },
-          { en: 'The calculation', pt: 'O cálculo' },
-          { en: 'The text displayed with printf', pt: 'O texto exibido com printf' },
-          { en: 'The variable type', pt: 'O tipo da variável' }
-        ],
-        answer: 2,
-        explanation: { en: 'Output is what the program returns to the user.', pt: 'Saída é o que o programa devolve para o usuário.' }
+        en: 'Understand what input means',
+        pt: 'Entender o que significa entrada'
       },
       {
-        question: { en: 'Which line usually signals a successful C program execution?', pt: 'Qual linha geralmente indica uma execução bem-sucedida em C?' },
-        options: [
-          { en: '#include <stdio.h>', pt: '#include <stdio.h>' },
-          { en: 'int main()', pt: 'int main()' },
-          { en: 'printf()', pt: 'printf()' },
-          { en: 'return 0;', pt: 'return 0;' }
-        ],
-        answer: 3,
-        explanation: { en: 'return 0 finishes main successfully.', pt: 'return 0 finaliza a função main com sucesso.' }
+        en: 'Identify stored information',
+        pt: 'Identificar informações armazenadas'
+      },
+      {
+        en: 'Recognize program output',
+        pt: 'Reconhecer a saída do programa'
       }
     ],
-    challenge: {
-      title: { en: 'Write the mental algorithm', pt: 'Escreva o algoritmo mental' },
-      instruction: {
-        en: 'Write a 3-line flow for a program that receives an age and checks if the person can join a course.',
-        pt: 'Escreva um fluxo de 3 linhas para um programa que recebe uma idade e verifica se a pessoa pode entrar em um curso.'
+
+    quiz: [
+      {
+        question: {
+          en: 'What is the program output?',
+          pt: 'O que é a saída do programa?'
+        },
+
+        options: [
+          {
+            en: 'The variable name',
+            pt: 'O nome da variável'
+          },
+          {
+            en: 'The text displayed with printf',
+            pt: 'O texto mostrado com printf'
+          },
+          {
+            en: 'The include line',
+            pt: 'A linha include'
+          },
+          {
+            en: 'The variable type',
+            pt: 'O tipo da variável'
+          }
+        ],
+
+        answer: 1,
+
+        explanation: {
+          en: 'Output is what the program shows to the user.',
+          pt: 'Saída é o que o programa mostra para o usuário.'
+        }
       },
-      placeholder: { en: 'Input: ...\nProcessing: ...\nOutput: ...', pt: 'Entrada: ...\nProcessamento: ...\nSaída: ...' },
-      expectedKeywords: { en: ['input', 'age', 'if', 'output'], pt: ['entrada', 'idade', 'if', 'saída'] },
+
+      {
+        question: {
+          en: 'Which line usually finishes a C program correctly?',
+          pt: 'Qual linha normalmente finaliza um programa C corretamente?'
+        },
+
+        options: [
+          {
+            en: 'printf()',
+            pt: 'printf()'
+          },
+          {
+            en: 'int main()',
+            pt: 'int main()'
+          },
+          {
+            en: 'return 0;',
+            pt: 'return 0;'
+          },
+          {
+            en: '#include <stdio.h>',
+            pt: '#include <stdio.h>'
+          }
+        ],
+
+        answer: 2,
+
+        explanation: {
+          en: 'return 0 indicates the program finished successfully.',
+          pt: 'return 0 indica que o programa terminou corretamente.'
+        }
+      }
+    ],
+
+    challenge: {
+      title: {
+        en: 'Describe the program flow',
+        pt: 'Descreva o fluxo do programa'
+      },
+
+      instruction: {
+        en: 'Write 3 simple lines explaining a program that receives a student name and study hours, then shows the information on screen.',
+        pt: 'Escreva 3 linhas simples explicando um programa que recebe o nome do estudante e horas de estudo, depois mostra essas informações na tela.'
+      },
+
+      placeholder: {
+        en: 'Input: student name and study hours\nProcessing: store the information\nOutput: display the data on screen',
+        pt: 'Entrada: nome do estudante e horas de estudo\nProcessamento: guardar as informações\nSaída: mostrar os dados na tela'
+      },
+
+      expectedKeywords: {
+        en: ['input', 'name', 'hours', 'output'],
+        pt: ['entrada', 'nome', 'horas', 'saída']
+      },
+
       modelAnswer: {
-        en: 'Input: receive the age. Processing: compare age with the minimum age using if. Output: show whether the person can join or not.',
-        pt: 'Entrada: receber a idade. Processamento: comparar a idade com a idade mínima usando if. Saída: mostrar se a pessoa pode entrar ou não.'
+        en: 'Input: receive the student name and study hours.\nProcessing: store the information in variables.\nOutput: display the student data on screen.',
+        pt: 'Entrada: receber o nome do estudante e horas de estudo.\nProcessamento: guardar as informações em variáveis.\nSaída: mostrar os dados do estudante na tela.'
       }
     }
   },
@@ -165,64 +238,276 @@ export const practiceBySlug: Record<string, Practice> = {
   },
   'c-loops': {
     slug: 'c-loops',
-    title: { en: 'Active practice: controlled repetition', pt: 'Prática ativa: repetição controlada' },
-    prompt: { en: 'A loop has an initial value, a condition and an update. Predict how many times it runs.', pt: 'Um loop tem valor inicial, condição e atualização. Preveja quantas vezes ele roda.' },
+
+    title: {
+      en: 'Active practice: controlled repetition',
+      pt: 'Prática ativa: repetição controlada'
+    },
+
+    prompt: {
+      en: 'A loop repeats steps automatically. Focus on where it starts, when it stops and what changes each time.',
+      pt: 'Um loop repete passos automaticamente. Foque em onde ele começa, quando ele para e o que muda a cada repetição.'
+    },
+
     checkpoints: [
-      { en: 'Find the initial value', pt: 'Encontrar o valor inicial' },
-      { en: 'Read the stop condition', pt: 'Ler a condição de parada' },
-      { en: 'Check the counter update', pt: 'Verificar a atualização do contador' }
-    ],
-    quiz: [
       {
-        question: { en: 'How many times does this run: for (int i = 1; i <= 3; i++)?', pt: 'Quantas vezes isso roda: for (int i = 1; i <= 3; i++)?' },
-        options: [{ en: '1', pt: '1' }, { en: '2', pt: '2' }, { en: '3', pt: '3' }, { en: '4', pt: '4' }],
-        answer: 2,
-        explanation: { en: 'i is 1, 2 and 3. When it becomes 4, the condition is false.', pt: 'i vale 1, 2 e 3. Quando vira 4, a condição fica falsa.' }
+        en: 'Find the starting value',
+        pt: 'Encontrar o valor inicial'
       },
       {
-        question: { en: 'Which part usually updates the counter?', pt: 'Qual parte geralmente atualiza o contador?' },
-        options: [{ en: 'int i = 1', pt: 'int i = 1' }, { en: 'i <= 10', pt: 'i <= 10' }, { en: 'i++', pt: 'i++' }, { en: 'printf', pt: 'printf' }],
-        answer: 2,
-        explanation: { en: 'i++ increases the counter after each iteration.', pt: 'i++ aumenta o contador depois de cada repetição.' }
+        en: 'Read the stop condition',
+        pt: 'Ler a condição de parada'
+      },
+      {
+        en: 'Understand the counter update',
+        pt: 'Entender a atualização do contador'
       }
     ],
+
+    quiz: [
+      {
+        question: {
+          en: 'How many times does this run: for (int i = 1; i <= 3; i++)?',
+          pt: 'Quantas vezes isso roda: for (int i = 1; i <= 3; i++)?'
+        },
+
+        options: [
+          { en: '1', pt: '1' },
+          { en: '2', pt: '2' },
+          { en: '3', pt: '3' },
+          { en: '4', pt: '4' }
+        ],
+
+        answer: 2,
+
+        explanation: {
+          en: 'The loop runs with i = 1, 2 and 3.',
+          pt: 'O loop roda com i = 1, 2 e 3.'
+        }
+      },
+
+      {
+        question: {
+          en: 'Which part updates the counter?',
+          pt: 'Qual parte atualiza o contador?'
+        },
+
+        options: [
+          { en: 'int i = 1', pt: 'int i = 1' },
+          { en: 'i <= 10', pt: 'i <= 10' },
+          { en: 'i++', pt: 'i++' },
+          { en: 'printf()', pt: 'printf()' }
+        ],
+
+        answer: 2,
+
+        explanation: {
+          en: 'i++ increases the counter after each repetition.',
+          pt: 'i++ aumenta o contador depois de cada repetição.'
+        }
+      }
+    ],
+
     challenge: {
-      title: { en: 'Write a repetition', pt: 'Escreva uma repetição' },
-      instruction: { en: 'Write a for loop that prints numbers from 1 to 5.', pt: 'Escreva um loop for que imprime os números de 1 a 5.' },
-      placeholder: { en: 'for (...) {\n    printf(...);\n}', pt: 'for (...) {\n    printf(...);\n}' },
-      expectedKeywords: { en: ['for', 'int', '<=', 'printf', '++'], pt: ['for', 'int', '<=', 'printf', '++'] },
-      modelAnswer: { en: 'for (int i = 1; i <= 5; i++) {\n    printf("%d", i);\n}', pt: 'for (int i = 1; i <= 5; i++) {\n    printf("%d", i);\n}' }
+      title: {
+        en: 'Explain the repetition flow',
+        pt: 'Explique o fluxo da repetição'
+      },
+
+      instruction: {
+        en: 'Describe how the loop starts, repeats and stops.',
+        pt: 'Descreva como o loop começa, repete e para.'
+      },
+
+      placeholder: {
+        en:
+  `Input:
+  receive number 3
+
+  Processing:
+  start at 1
+  repeat until 5
+  increase the counter
+
+  Output:
+  show the multiplication results`,
+        pt:
+  `Entrada:
+  receber o número 3
+
+  Processamento:
+  começar em 1
+  repetir até 5
+  aumentar o contador
+
+  Saída:
+  mostrar os resultados da multiplicação`
+      },
+
+      expectedKeywords: {
+        en: ['loop', 'repeat', 'counter', 'output'],
+        pt: ['loop', 'repetição', 'contador', 'saída']
+      },
+
+      modelAnswer: {
+        en:
+  `Input:
+  receive the number 3
+
+  Processing:
+  start the counter at 1
+  repeat until 5
+  increase the counter after each step
+
+  Output:
+  display the multiplication results`,
+        pt:
+  `Entrada:
+  receber o número 3
+
+  Processamento:
+  começar o contador em 1
+  repetir até 5
+  aumentar o contador a cada passo
+
+  Saída:
+  mostrar os resultados da multiplicação`
+      }
     }
   },
   'c-functions': {
     slug: 'c-functions',
-    title: { en: 'Active practice: parameters and return', pt: 'Prática ativa: parâmetros e retorno' },
-    prompt: { en: 'A function is a small machine: it receives values, processes them and returns something.', pt: 'Uma função é uma pequena máquina: recebe valores, processa e retorna algo.' },
+
+    title: {
+      en: 'Active practice: parameters and return',
+      pt: 'Prática ativa: parâmetros e retorno'
+    },
+
+    prompt: {
+      en: 'A function is a reusable rule. It receives values, processes them and sends a result back.',
+      pt: 'Uma função é uma regra reutilizável. Ela recebe valores, processa e devolve um resultado.'
+    },
+
     checkpoints: [
-      { en: 'Name by action', pt: 'Nomear pela ação' },
-      { en: 'Identify parameters', pt: 'Identificar parâmetros' },
-      { en: 'Know what it returns', pt: 'Saber o que ela retorna' }
-    ],
-    quiz: [
       {
-        question: { en: 'In int sum(int a, int b), what are the parameters?', pt: 'Em int sum(int a, int b), quais são os parâmetros?' },
-        options: [{ en: 'int sum', pt: 'int sum' }, { en: 'a and b', pt: 'a e b' }, { en: 'return', pt: 'return' }, { en: 'int main', pt: 'int main' }],
-        answer: 1,
-        explanation: { en: 'a and b are the values received by the function.', pt: 'a e b são os valores recebidos pela função.' }
+        en: 'Identify what the function receives',
+        pt: 'Identificar o que a função recebe'
       },
       {
-        question: { en: 'Which keyword sends a value back?', pt: 'Qual palavra-chave envia um valor de volta?' },
-        options: [{ en: 'printf', pt: 'printf' }, { en: 'include', pt: 'include' }, { en: 'return', pt: 'return' }, { en: 'main', pt: 'main' }],
-        answer: 2,
-        explanation: { en: 'return sends a value back to the caller.', pt: 'return envia um valor de volta para quem chamou a função.' }
+        en: 'Explain what happens inside the function',
+        pt: 'Explicar o que acontece dentro da função'
+      },
+      {
+        en: 'Recognize what the function returns',
+        pt: 'Reconhecer o que a função retorna'
       }
     ],
+
+    quiz: [
+      {
+        question: {
+          en: 'In int sum(int a, int b), what are the parameters?',
+          pt: 'Em int sum(int a, int b), quais são os parâmetros?'
+        },
+
+        options: [
+          { en: 'int sum', pt: 'int sum' },
+          { en: 'a and b', pt: 'a e b' },
+          { en: 'return', pt: 'return' },
+          { en: 'int main', pt: 'int main' }
+        ],
+
+        answer: 1,
+
+        explanation: {
+          en: 'a and b are the values received by the function.',
+          pt: 'a e b são os valores recebidos pela função.'
+        }
+      },
+
+      {
+        question: {
+          en: 'Which keyword sends a value back?',
+          pt: 'Qual palavra-chave envia um valor de volta?'
+        },
+
+        options: [
+          { en: 'printf', pt: 'printf' },
+          { en: 'include', pt: 'include' },
+          { en: 'return', pt: 'return' },
+          { en: 'main', pt: 'main' }
+        ],
+
+        answer: 2,
+
+        explanation: {
+          en: 'return sends the result back to the place where the function was called.',
+          pt: 'return envia o resultado de volta para o lugar onde a função foi chamada.'
+        }
+      }
+    ],
+
     challenge: {
-      title: { en: 'Create a small function', pt: 'Crie uma pequena função' },
-      instruction: { en: 'Write a C function that receives two integers and returns the biggest one.', pt: 'Escreva uma função em C que recebe dois inteiros e retorna o maior deles.' },
-      placeholder: { en: 'int max(int a, int b) {\n    ...\n}', pt: 'int max(int a, int b) {\n    ...\n}' },
-      expectedKeywords: { en: ['int', 'max', 'if', 'return'], pt: ['int', 'max', 'if', 'return'] },
-      modelAnswer: { en: 'int max(int a, int b) {\n    if (a > b) return a;\n    return b;\n}', pt: 'int max(int a, int b) {\n    if (a > b) return a;\n    return b;\n}' }
+      title: {
+        en: 'Explain a reusable calculation',
+        pt: 'Explique um cálculo reutilizável'
+      },
+
+      instruction: {
+        en: 'Describe the flow of a function that receives a base amount and a percent, calculates a discount and returns the final value.',
+        pt: 'Descreva o fluxo de uma função que recebe um valor base e um percentual, calcula um desconto e retorna o valor final.'
+      },
+
+      placeholder: {
+        en:
+  `Input:
+  base amount and percent
+
+  Processing:
+  calculate the discount
+  subtract the discount from the base amount
+
+  Output:
+  return the final value`,
+        pt:
+  `Entrada:
+  valor base e percentual
+
+  Processamento:
+  calcular o desconto
+  subtrair o desconto do valor base
+
+  Saída:
+  retornar o valor final`
+      },
+
+      expectedKeywords: {
+        en: ['input', 'percent', 'calculate', 'return'],
+        pt: ['entrada', 'percentual', 'calcular', 'retornar']
+      },
+
+      modelAnswer: {
+        en:
+  `Input:
+  receive the base amount and the discount percent
+
+  Processing:
+  calculate how much the discount is
+  subtract the discount from the base amount
+
+  Output:
+  return the final value`,
+        pt:
+  `Entrada:
+  receber o valor base e o percentual de desconto
+
+  Processamento:
+  calcular quanto vale o desconto
+  subtrair o desconto do valor base
+
+  Saída:
+  retornar o valor final`
+      }
     }
   },
   'c-arrays': {

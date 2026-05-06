@@ -15,9 +15,18 @@
 
 <section class="section container lesson-layout">
   <LessonSidebar current="c-intro" />
+
   <div class="grid">
-    <LessonHeader eyebrow={page.eyebrow} title={lesson?.title[$language] ?? ''} description={page.description} code={`#include <stdio.h>\n\nint main() {\n    printf("Hello, Syntax Lab!");\n    return 0;\n}`} docs={lesson?.docs ?? []} />
+    <LessonHeader
+      eyebrow={page.eyebrow}
+      title={lesson?.title[$language] ?? ''}
+      description={page.description}
+      code={`#include <stdio.h>\n\nint main() {\n    printf("Hello, Syntax Lab!\\n");\n    return 0;\n}`}
+      docs={lesson?.docs ?? []}
+    />
+
     <CIntroLab />
+
     {#if practice}
       <PracticeBlock {practice} />
     {/if}

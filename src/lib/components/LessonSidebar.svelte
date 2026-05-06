@@ -11,11 +11,13 @@
 
 <div class="grid">
   <ProgressTracker {current} />
+
   <div class="card">
     <div class="label">{t.basicPath}</div>
     <div class="sidebar-list">
-      {#each basicLessons as lesson}
+      {#each basicLessons as lesson, index}
         <a class:active={current === lesson.slug} class="lesson-link" href={`/basic/${lesson.slug}`}>
+          <div class="label">{t.lessonLabel.replace('{index}', (index + 1).toString())}</div>
           <strong>{lesson.title[$language]}</strong>
           <div style="color: var(--muted); font-size: .92rem; margin-top: .25rem;">{lesson.interaction[$language]}</div>
         </a>
