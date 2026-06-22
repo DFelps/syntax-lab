@@ -6,6 +6,14 @@ Syntax Lab focuses on active learning through playgrounds, short challenges, qui
 
 ---
 
+## Demo
+
+[Watch the demo video](https://www.youtube.com/watch?v=W0aic1vWE2E)
+
+[![Syntax Lab demo video](https://img.youtube.com/vi/W0aic1vWE2E/maxresdefault.jpg)](https://www.youtube.com/watch?v=W0aic1vWE2E)
+
+---
+
 ## Highlights
 
 - SvelteKit application with Svelte 5
